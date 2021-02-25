@@ -29,6 +29,7 @@ struct ReqData {
 
 struct Body {
 	entities []TFGridEntity
+	twins []TFGridTwin
 }
 
 // TODO: will need methods here to use the https client
@@ -69,6 +70,47 @@ pub fn (mut explorer Explorer) entity_by_id (id string) ? TFGridEntity {
 	} else {
 		eprintln('no entity found')
 		return TFGridEntity{}
+	}
+}
+
+// TODO: will need methods here to use the https client
+pub fn (mut explorer Explorer) twin_list() ? []TFGridTwin {
+	mut query := GraphqlQuery{
+		query: '{ twins { twinId, ip, gridVersion, address } }',
+		operation: 'getAll'
+	}
+
+	req := make_post_request_query(explorer.ipaddr, query)?
+	
+	res := req.do() ?
+
+	data := json.decode(ReqData, res.text) or {
+		eprintln('failed to decode json')
+		return []TFGridTwin{}
+	}
+	return data.data.twins
+}
+
+pub fn (mut explorer Explorer) twin_by_id (id string) ? TFGridTwin {
+	mut query := GraphqlQuery{
+		query: '{ twins(where: {twinId_eq: $id }) { twinId, ip, gridVersion, address } }',
+		operation: 'getOne',
+	}
+
+	req := make_post_request_query(explorer.ipaddr, query)?
+
+	res := req.do() ?
+
+	data := json.decode(ReqData, res.text) or {
+		eprintln('failed to decode json')
+		return TFGridTwin{}
+	}
+
+	if data.data.twins.len > 0 {
+		return data.data.twins[0]
+	} else {
+		eprintln('no twin found')
+		return TFGridTwin{}
 	}
 }
 

@@ -29,14 +29,17 @@ pub fn (mut grid TFGrid) entity_get_by_id(entity_id string) ?TFGridEntity {
 	return grid.explorer.entity_by_id(entity_id)
 }
 
+pub fn (mut grid TFGrid) twin_list() ?[]TFGridTwin {
+	return grid.explorer.twin_list()
+}
+
+pub fn (mut grid TFGrid) twin_get_by_id(twin_id string) ?TFGridTwin {
+	return grid.explorer.twin_by_id(twin_id)
+}
+
 pub fn (mut grid TFGrid) farmer_get(entity int) TFGridFarmer {
 	// use explorer graphql interface
 	return TFGridFarmer{}
-}
-
-pub fn (mut grid TFGrid) twin_get(entity int) TFGridTwin {
-	// use explorer graphql interface
-	return TFGridTwin{}
 }
 
 pub fn (mut grid TFGrid) node_get(entity int) TFGridNode {

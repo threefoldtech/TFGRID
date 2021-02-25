@@ -8,6 +8,12 @@ fn main () {
 	// entities := tfgrid.entity_list()?
 	// println(entities)
 
-	entity := tfgrid.entity_get_by_id("1") ?
-	print(entity)
+	// entity := tfgrid.entity_get_by_id("1") ?
+	// print(entity)
+
+	twins := tfgrid.twin_list()?
+	println(twins)
+
+	twin := tfgrid.twin_get_by_id("1") ?
+	print(twin)
 }

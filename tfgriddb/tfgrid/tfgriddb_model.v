@@ -12,7 +12,10 @@ pub struct TFGridEntity{
 }
 
 pub struct TFGridTwin{
-	id u32
+	id string [json: twinId]
+	ip string [json: ip]
+	grid_version string [json: gridVersion]
+	address string [json: address]
 }
 
 pub struct TFGridNode{
