@@ -21,6 +21,6 @@ pub fn new(nodeif int, mut farmer &Farmer) Node{
 }
 
 
-fn (mut farmer Farmer) todefine_what_we_need() bool{
-	//
-}
+// fn (mut farmer Farmer) todefine_what_we_need() bool{
+// 	//
+// }

@@ -31,7 +31,7 @@ pub mut:
 //fills in all variables and make sure all is good so the object can be submmitted to a Zero-OS
 pub fn (mut deployment Deployment) submit(){
 
-	deployment.signature_hash = deploymentsignature_hash()
+	deployment.signature_hash = deployment.signature_hash()
 
 }
 
@@ -48,13 +48,11 @@ fn (mut deployment Deployment) containers_get () []Container{
 
 }
 
-
-
 fn (mut deployment Deployment) signature_hash () string{
-	out := []string()
+	mut out := []string{}
 	out << "$deployment.expiration"
 	for item in deployment.deployment_items{
-		out << item.category
+		out << '$item.category'
 		out << item.json_data
 		out << "$item.node_id"
 		out << "$item.acl"
@@ -65,7 +63,7 @@ fn (mut deployment Deployment) signature_hash () string{
 pub struct DeploymentItem {
 pub mut:
 	//unique name per Deployment
-	name string	
+	name			 string
 	node_id			 int
 	category		 Category
 	//in epoch format
@@ -78,10 +76,13 @@ pub mut:
 	version			int
 }
 
-enum Category {
-	container Container
-	zdb ZDB
-	//TODO:
+pub enum Category {
+	container
+	volume
+	network
+	zdb
+	kubernetes
+	public_ip
 }
 
 pub struct SignatureRequirement {
@@ -126,7 +127,7 @@ pub struct PaymentRequest{
 pub struct ACE {
 	// the administrator twin id
 	twin_ids []int
-	rights Right[]
+	rights []Right
 }
 
 enum Right{

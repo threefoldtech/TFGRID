@@ -10,7 +10,7 @@ pub enum TwinState{
 }
 
 struct Twin{
-mut pub:	
+pub mut:
 	// our own digital twin
 	twin_id int	
 	// planetary network addr of this twin (how registered on the global net)
@@ -32,7 +32,7 @@ pub fn new(twinid int, mut tfgrid &TFGrid) bool{
 	//check we can reach that digital twin
 	twin.ipaddr.ping()?
 	//check a rest webservice on the digital twin (ping webservice)
-	
+
 	// do whatever we need to do
 
 	//if ok
