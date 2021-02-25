@@ -19,7 +19,27 @@ pub struct TFGridTwin{
 }
 
 pub struct TFGridNode{
-	id u32
+	id string [json: nodeId]
+	farm_id string [json: farmId]
+	grid_version string [json: gridVersion]
+	country_id string [json: countryId]
+	city_id string [json: cityId]
+	address string [json: address]
+	resources Resources [json: resources]
+	location Location [json: location]
+	pubkey string [json: pubKey]
+}
+
+pub struct Resources {
+	hru string
+	sru string
+	cru string
+	mru string
+}
+
+pub struct Location {
+	longitude string
+	latitude string
 }
 
 pub struct TFGridFarmer{

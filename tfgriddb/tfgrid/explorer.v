@@ -30,6 +30,7 @@ struct ReqData {
 struct Body {
 	entities []TFGridEntity
 	twins []TFGridTwin
+	nodes []TFGridNode
 }
 
 // TODO: will need methods here to use the https client
@@ -111,6 +112,46 @@ pub fn (mut explorer Explorer) twin_by_id (id string) ? TFGridTwin {
 	} else {
 		eprintln('no twin found')
 		return TFGridTwin{}
+	}
+}
+
+pub fn (mut explorer Explorer) nodes_list() ? []TFGridNode {
+	mut query := GraphqlQuery{
+		query: '{ nodes { gridVersion, nodeId, farmId, resources{ sru, cru, hru, mru } location{ latitude, longitude }, pubKey, address, countryId, cityId } }',
+		operation: 'getAll'
+	}
+
+	req := make_post_request_query(explorer.ipaddr, query)?
+	
+	res := req.do() ?
+
+	data := json.decode(ReqData, res.text) or {
+		eprintln('failed to decode json')
+		return []TFGridNode{}
+	}
+	return data.data.nodes
+}
+
+pub fn (mut explorer Explorer) node_by_id (id string) ? TFGridNode {
+	mut query := GraphqlQuery{
+		query: '{ nodes(where: { nodeId_eq: $id }) { gridVersion, nodeId, farmId, resources{ sru, cru, hru, mru } location{ latitude, longitude }, pubKey, address, countryId, cityId } }',
+		operation: 'getOne',
+	}
+
+	req := make_post_request_query(explorer.ipaddr, query)?
+
+	res := req.do() ?
+
+	data := json.decode(ReqData, res.text) or {
+		eprintln('failed to decode json')
+		return TFGridNode{}
+	}
+
+	if data.data.nodes.len > 0 {
+		return data.data.nodes[0]
+	} else {
+		eprintln('no node found')
+		return TFGridNode{}
 	}
 }
 

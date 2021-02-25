@@ -37,14 +37,17 @@ pub fn (mut grid TFGrid) twin_get_by_id(twin_id string) ?TFGridTwin {
 	return grid.explorer.twin_by_id(twin_id)
 }
 
+pub fn (mut grid TFGrid) nodes_list() ?[]TFGridNode {
+	return grid.explorer.nodes_list()
+}
+
+pub fn (mut grid TFGrid) nodes_get_by_id(node_id string) ?TFGridNode {
+	return grid.explorer.node_by_id(node_id)
+}
+
 pub fn (mut grid TFGrid) farmer_get(entity int) TFGridFarmer {
 	// use explorer graphql interface
 	return TFGridFarmer{}
-}
-
-pub fn (mut grid TFGrid) node_get(entity int) TFGridNode {
-	// use explorer graphql interface
-	return TFGridNode{}
 }
 
 // TODO: arguments to be added
