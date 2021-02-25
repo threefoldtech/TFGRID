@@ -6,6 +6,9 @@ import crypto.md5
 //if signature not done on the main Deployment one, nothing will happen
 pub struct Deployment {
 pub mut:
+	//increments for each new interation of this model
+	//signature needs to be achieved when version goes up
+	version			int
 	//the twin who is responsible for this deployment
 	originator_twin_id 			int
 	//each deployment has unique id (in relation to originator)
@@ -70,6 +73,9 @@ pub mut:
 	//list of Access Control Entries
 	//what can an administrator do
 	acl				[]ACE
+	//version can never be higher than the main version
+	//if lower then it means this item does not have to be upgraded (restarted with same date)
+	version			int
 }
 
 enum Category {
