@@ -54,16 +54,22 @@ fn (mut deployment Deployment) signature_hash () string{
 		out << item.category
 		out << item.json_data
 		out << "$item.node_id"
+		out << "$item.acl"
 	}
 	return md5.hexhash(out.join("\n"))
 }
 
 pub struct DeploymentItem {
 pub mut:
+	//unique name per Deployment
+	name string	
 	node_id			 int
 	category		 Category
-	json_data        string
 	//in epoch format
+	json_data        string
+	//list of Access Control Entries
+	//what can an administrator do
+	acl				[]ACE
 }
 
 enum Category {
@@ -83,7 +89,7 @@ pub mut:
 
 pub struct SignatureRequest {
 pub mut:
-	// unique name as used in TFGrid DB
+	// unique id as used in TFGrid DB
 	twin_id int
 	// if put on required then this twin_id needs to sign
 	required bool
@@ -93,7 +99,7 @@ pub mut:
 
 pub struct Signature {
 pub mut:
-	// unique name as used in TFGrid DB
+	// unique id as used in TFGrid DB
 	twin_id int
 	// signature (done with private key of the twin_id)
 	signature string
@@ -101,10 +107,25 @@ pub mut:
 
 
 pub struct PaymentRequest{
-	// unique name as used in TFGrid DB
+	// unique id as used in TFGrid DB
 	twin_id int
 	// secret is encrypted by means of public key of the twin who needs to do the payment 
 	// that secret is used to let the paying digital twin verify if payment is valid
 	// can be empty, which means there is no secret, payment will done if payment processor is willing to pay to that farmer
 	secret string
+}
+
+
+//Access Control Entry
+pub struct ACE {
+	// the administrator twin id
+	twin_ids []int
+	rights Right[]
+}
+
+enum Right{
+	restart
+	delete
+	stats
+	logs
 }
