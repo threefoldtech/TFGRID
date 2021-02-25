@@ -12,8 +12,6 @@ pub fn explorer_new() ?Explorer {
 		ipaddr: 'https://explorer.devnet.grid.tf/graphql/'
 	}
 
-	// now add the ipaddresses in code which explorers can be reached
-
 	return explorer
 }
 
@@ -34,7 +32,6 @@ struct Body {
 	farms []TFGridFarmer
 }
 
-// TODO: will need methods here to use the https client
 pub fn (mut explorer Explorer) entity_list() ? []TFGridEntity {
 	mut query := GraphqlQuery{
 		query: '{ entities { name, entityId, name, gridVersion, countryId, cityId } }',
@@ -75,7 +72,6 @@ pub fn (mut explorer Explorer) entity_by_id (id string) ? TFGridEntity {
 	}
 }
 
-// TODO: will need methods here to use the https client
 pub fn (mut explorer Explorer) twin_list() ? []TFGridTwin {
 	mut query := GraphqlQuery{
 		query: '{ twins { twinId, ip, gridVersion, address } }',
