@@ -12,6 +12,6 @@ pub mut:
 	mounts      []Mount
 	network     Member
 	capacity    ContainerCapacity
-	logs        []Logs
-	stats       []Stats
+	logs        []Logs //what is this? Should not be in an object like this. QUESTION:
+	stats       []Stats //what is this? QUESTION:
 }
