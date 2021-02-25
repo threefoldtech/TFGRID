@@ -164,10 +164,13 @@ pub mut:
 
 pub struct ContainerCapacity {
 pub mut:
-	cpu       u32
-	memory    u64
-	disk_type string
-	disk_size u64
+	//cpu cores, minimal 10 cpu_centi_core
+	cpu_centi_core u32
+	//memory in MB, minimal 100 MB
+	memory_mb u16
+	disk_type string //enum TODO
+	//disk size in MB, min 100 MB
+	disk_size_mb u64
 }
 
 pub fn (cp &ContainerCapacity) challenge() string {

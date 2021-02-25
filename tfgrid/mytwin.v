@@ -12,22 +12,24 @@ struct MyTwin{
 	// our own digital twin
 	twin_id int	
 	// planetary network addr of this twin (how registered on the global net)
-	ipaddr6 Ipaddr6
+	ipaddr Ipaddr
 	state MyTwinState
+	privatekey MyTwinPrivateKey
 }
 
-fn (mut twin MyTwin) init() bool{
-	if twin.state != MyTwinState.ok{
-		//check we can reach our own digital twin
-		twin.ipaddr.ping()?
-		//check a rest webservice on the digital twin (ping webservice)
-		// do whatever we need to do
-	}
+fn mytwin_new ()? MyTwin{
+	mut twin := MyTwin{}
+	//check we can reach our own digital twin
+	twin.ipaddr.ping()?
+	//check a rest webservice on the digital twin (ping webservice)
+	// do whatever we need to do
 }
 
 
 //our own private key
 struct MyTwinPrivateKey{
+pub mut:
+	path string
 }
 
 fn (mut key MyTwinPrivateKey) load(path string)?{
@@ -39,6 +41,8 @@ fn (mut key MyTwinPrivateKey) load(path string)?{
 
 }
 
+
+//TODO: do we need to do this here? maybe we should use digital twin proxy (is the nodejs)
 
 //could be its not strings we need to return but bytestrings? TODO:
 fn (mut key MyTwinPrivateKey) sign(payload string)? string{
@@ -55,3 +59,7 @@ fn (mut key MyTwinPrivateKey) decrypt(payload string)? string{
 
 }
 
+//prob bytestring
+fn (mut key MyTwinPrivateKey)pub_key_get()? string{
+
+}

@@ -6,6 +6,15 @@ vlang based set of tools to work with the TF Grid
 
 ```bash
 v install despiegk.crystallib
+#or call
+bash install.sh
+```
+
+## to use the crystal lib tools
+
+```
+import despiegk.crystallib.installers
+#or any other lib you need from crystallib
 ```
 
 ## contribute on crystallib
