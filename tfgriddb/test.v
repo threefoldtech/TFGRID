@@ -22,4 +22,10 @@ fn main () {
 
 	node := tfgrid.nodes_get_by_id("1") ?
 	print(node)
+
+	farms := tfgrid.farms_list()?
+	println(farms)																												
+
+	farm := tfgrid.farm_get_by_id("1") ?
+	print(farm)
 }

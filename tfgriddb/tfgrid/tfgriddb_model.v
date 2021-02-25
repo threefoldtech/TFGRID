@@ -44,5 +44,10 @@ pub struct Location {
 
 pub struct TFGridFarmer{
 	id u32
+	twin_id string [json: twinId]
+	grid_version string [json: gridVersion]
 	name string
+	country_id string [json: countryId]
+	city_id string [json: cityId]
+	pricing_policy_id string [json: pricingPolicyId]
 }

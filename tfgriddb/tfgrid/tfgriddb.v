@@ -45,9 +45,12 @@ pub fn (mut grid TFGrid) nodes_get_by_id(node_id string) ?TFGridNode {
 	return grid.explorer.node_by_id(node_id)
 }
 
-pub fn (mut grid TFGrid) farmer_get(entity int) TFGridFarmer {
-	// use explorer graphql interface
-	return TFGridFarmer{}
+pub fn (mut grid TFGrid) farms_list() ?[]TFGridFarmer {
+	return grid.explorer.farms_list()
+}
+
+pub fn (mut grid TFGrid) farm_get_by_id(farm_id string) ?TFGridFarmer {
+	return grid.explorer.farm_by_id(farm_id)
 }
 
 // TODO: arguments to be added

@@ -31,6 +31,7 @@ struct Body {
 	entities []TFGridEntity
 	twins []TFGridTwin
 	nodes []TFGridNode
+	farms []TFGridFarmer
 }
 
 // TODO: will need methods here to use the https client
@@ -152,6 +153,46 @@ pub fn (mut explorer Explorer) node_by_id (id string) ? TFGridNode {
 	} else {
 		eprintln('no node found')
 		return TFGridNode{}
+	}
+}
+
+pub fn (mut explorer Explorer) farms_list() ? []TFGridFarmer {
+	mut query := GraphqlQuery{
+		query: '{ farms { name, farmId, twinId, gridVersion, countryId, cityId, pricingPolicyId } }',
+		operation: 'getAll'
+	}
+
+	req := make_post_request_query(explorer.ipaddr, query)?
+	
+	res := req.do() ?
+
+	data := json.decode(ReqData, res.text) or {
+		eprintln('failed to decode json')
+		return []TFGridFarmer{}
+	}
+	return data.data.farms
+}
+
+pub fn (mut explorer Explorer) farm_by_id (id string) ? TFGridFarmer {
+	mut query := GraphqlQuery{
+		query: '{ farms(where: { farmId_eq: $id }) { name, farmId, twinId, gridVersion, countryId, cityId, pricingPolicyId } }',
+		operation: 'getOne',
+	}
+
+	req := make_post_request_query(explorer.ipaddr, query)?
+
+	res := req.do() ?
+
+	data := json.decode(ReqData, res.text) or {
+		eprintln('failed to decode json')
+		return TFGridFarmer{}
+	}
+
+	if data.data.farms.len > 0 {
+		return data.data.farms[0]
+	} else {
+		eprintln('no node found')
+		return TFGridFarmer{}
 	}
 }
 
