@@ -28,4 +28,7 @@ fn main () {
 
 	farm := tfgrid.farm_get_by_id("1") ?
 	print(farm)
+
+	nodes_by_resources := tfgrid.nodes_list_by_resource(1, 1, 500, 1)?
+	println(nodes_by_resources)
 }

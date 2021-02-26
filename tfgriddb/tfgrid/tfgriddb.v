@@ -45,6 +45,10 @@ pub fn (mut grid TFGrid) nodes_get_by_id(node_id string) ?TFGridNode {
 	return grid.explorer.node_by_id(node_id)
 }
 
+pub fn (mut grid TFGrid) nodes_list_by_resource(sru u32, cru u32, hru u32, mru u32) ?[]TFGridNode {
+	return grid.explorer.nodes_by_resources(sru, cru, hru, mru)
+}
+
 pub fn (mut grid TFGrid) farms_list() ?[]TFGridFarmer {
 	return grid.explorer.farms_list()
 }

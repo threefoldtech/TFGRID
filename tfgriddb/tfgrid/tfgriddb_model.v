@@ -25,12 +25,8 @@ pub struct TFGridNode{
 	country_id u32 [json: countryId]
 	city_id u32 [json: cityId]
 	address string [json: address]
-	resources Resources [json: resources]
 	location Location [json: location]
 	pubkey string [json: pubKey]
-}
-
-pub struct Resources {
 	hru u32
 	sru u32
 	cru u32

@@ -114,7 +114,7 @@ pub fn (mut explorer Explorer) twin_by_id (id string) ? TFGridTwin {
 
 pub fn (mut explorer Explorer) nodes_list() ? []TFGridNode {
 	mut query := GraphqlQuery{
-		query: '{ nodes { gridVersion, nodeId, farmId, resources{ sru, cru, hru, mru } location{ latitude, longitude }, pubKey, address, countryId, cityId } }',
+		query: '{ nodes { gridVersion, nodeId, farmId, sru, cru, hru, mru, location{ latitude, longitude }, pubKey, address, countryId, cityId } }',
 		operation: 'getAll'
 	}
 
@@ -131,7 +131,7 @@ pub fn (mut explorer Explorer) nodes_list() ? []TFGridNode {
 
 pub fn (mut explorer Explorer) node_by_id (id string) ? TFGridNode {
 	mut query := GraphqlQuery{
-		query: '{ nodes(where: { nodeId_eq: $id }) { gridVersion, nodeId, farmId, resources{ sru, cru, hru, mru } location{ latitude, longitude }, pubKey, address, countryId, cityId } }',
+		query: '{ nodes(where: { nodeId_eq: $id }) { gridVersion, nodeId, farmId, sru, cru, hru, mru, location{ latitude, longitude }, pubKey, address, countryId, cityId } }',
 		operation: 'getOne',
 	}
 
@@ -150,6 +150,23 @@ pub fn (mut explorer Explorer) node_by_id (id string) ? TFGridNode {
 		eprintln('no node found')
 		return TFGridNode{}
 	}
+}
+
+pub fn (mut explorer Explorer) nodes_by_resources (sru u32, cru u32, hru u32, mru u32) ? []TFGridNode {
+	mut query := GraphqlQuery{
+		query: '{ nodes(where: { sru_gt: $sru, cru_gt: $cru, hru_gt: $hru, mru_gt: $mru }) { gridVersion, nodeId, farmId, sru, cru, hru, mru, location{ latitude, longitude }, pubKey, address, countryId, cityId } }',
+		operation: 'getAll'
+	}
+
+	req := make_post_request_query(explorer.ipaddr, query)?
+
+	res := req.do() ?
+
+	data := json.decode(ReqData, res.text) or {
+		eprintln('failed to decode json')
+		return []TFGridNode{}
+	}
+	return data.data.nodes
 }
 
 pub fn (mut explorer Explorer) farms_list() ? []TFGridFarmer {
