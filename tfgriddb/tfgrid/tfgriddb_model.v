@@ -4,26 +4,26 @@ module tfgrid
 //as registered on the TFGrid DB
 //need the data models here
 pub struct TFGridEntity{
-	id string [json: entityId]
+	id u32 [json: entityId]
 	name string [json: name]
-	grid_version string [json: gridVersion]
-	country_id string [json: countryId]
-	city_id string [json: cityId]
+	grid_version u32 [json: gridVersion]
+	country_id u32 [json: countryId]
+	city_id u32 [json: cityId]
 }
 
 pub struct TFGridTwin{
-	id string [json: twinId]
+	id u32 [json: twinId]
 	ip string [json: ip]
-	grid_version string [json: gridVersion]
+	grid_version u32 [json: gridVersion]
 	address string [json: address]
 }
 
 pub struct TFGridNode{
-	id string [json: nodeId]
-	farm_id string [json: farmId]
+	id u32 [json: nodeId]
+	farm_id u32 [json: farmId]
 	grid_version string [json: gridVersion]
-	country_id string [json: countryId]
-	city_id string [json: cityId]
+	country_id u32 [json: countryId]
+	city_id u32 [json: cityId]
 	address string [json: address]
 	resources Resources [json: resources]
 	location Location [json: location]
@@ -31,10 +31,10 @@ pub struct TFGridNode{
 }
 
 pub struct Resources {
-	hru string
-	sru string
-	cru string
-	mru string
+	hru u32
+	sru u32
+	cru u32
+	mru u32
 }
 
 pub struct Location {
@@ -44,10 +44,10 @@ pub struct Location {
 
 pub struct TFGridFarmer{
 	id u32
-	twin_id string [json: twinId]
-	grid_version string [json: gridVersion]
+	twin_id u32 [json: twinId]
+	grid_version u32 [json: gridVersion]
 	name string
-	country_id string [json: countryId]
-	city_id string [json: cityId]
-	pricing_policy_id string [json: pricingPolicyId]
+	country_id u32 [json: countryId]
+	city_id u32 [json: cityId]
+	pricing_policy_id u32 [json: pricingPolicyId]
 }
