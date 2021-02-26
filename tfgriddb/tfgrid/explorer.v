@@ -30,6 +30,7 @@ struct Body {
 	twins []TFGridTwin
 	nodes []TFGridNode
 	farms []TFGridFarmer
+	countries []Country
 }
 
 pub fn (mut explorer Explorer) entity_list() ? []TFGridEntity {
@@ -204,8 +205,65 @@ pub fn (mut explorer Explorer) farm_by_id (id u32) ? TFGridFarmer {
 	if data.data.farms.len > 0 {
 		return data.data.farms[0]
 	} else {
-		eprintln('no node found')
+		eprintln('no farm found')
 		return TFGridFarmer{}
+	}
+}
+
+pub fn (mut explorer Explorer) countries_list() ? []Country {
+	mut query := GraphqlQuery{
+		query: '{ countries(limit: 10000) { name, code } }',
+		operation: 'getAll'
+	}
+
+	req := make_post_request_query(explorer.ipaddr, query)?
+	
+	res := req.do() ?
+
+	data := json.decode(ReqData, res.text) or {
+		eprintln('failed to decode json')
+		return []Country{}
+	}
+	return data.data.countries
+}
+
+pub fn (mut explorer Explorer) countries_by_name_substring(substring string) ? []Country {
+	mut query := GraphqlQuery{
+		query: '{ countries(where: { name_contains: "$substring" }) { name, code } }',
+		operation: 'getAll'
+	}
+
+	req := make_post_request_query(explorer.ipaddr, query)?
+
+	res := req.do() ?
+
+	data := json.decode(ReqData, res.text) or {
+		eprintln('failed to decode json')
+		return []Country{}
+	}
+	return data.data.countries
+}
+
+pub fn (mut explorer Explorer) countries_by_id(id u32) ? Country {
+	mut query := GraphqlQuery{
+		query: '{ countries(where: { id_eq: $id }) { name, code } }',
+		operation: 'getAll'
+	}
+
+	req := make_post_request_query(explorer.ipaddr, query)?
+
+	res := req.do() ?
+
+	data := json.decode(ReqData, res.text) or {
+		eprintln('failed to decode json')
+		return Country{}
+	}
+
+	if data.data.countries.len > 0 {
+		return data.data.countries[0]
+	} else {
+		eprintln('no country found')
+		return Country{}
 	}
 }
 

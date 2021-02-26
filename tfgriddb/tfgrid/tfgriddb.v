@@ -57,6 +57,18 @@ pub fn (mut grid TFGrid) farm_get_by_id(farm_id u32) ?TFGridFarmer {
 	return grid.explorer.farm_by_id(farm_id)
 }
 
+pub fn (mut grid TFGrid) countries_list() ?[]Country {
+	return grid.explorer.countries_list()
+}
+
+pub fn (mut grid TFGrid) countries_by_name_substring(subtring string) ?[]Country {
+	return grid.explorer.countries_by_name_substring(subtring)
+}
+
+pub fn (mut grid TFGrid) countries_by_id(id u32) ?Country {
+	return grid.explorer.countries_by_id(id)
+}
+
 // TODO: arguments to be added
 pub fn (mut grid TFGrid) node_register() TFGridNode {
 	// use personal digital twin as proxy

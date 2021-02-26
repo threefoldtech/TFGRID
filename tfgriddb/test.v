@@ -31,4 +31,14 @@ fn main () {
 
 	nodes_by_resources := tfgrid.nodes_list_by_resource(1, 1, 500, 1)?
 	println(nodes_by_resources)
+
+	countries := tfgrid.countries_list()?
+	println(countries)
+	
+	// Search for country belgium
+	countries_by_name_substring := tfgrid.countries_by_name_substring("elgium")?
+	println(countries_by_name_substring)
+
+	country_by_id := tfgrid.countries_by_id(65)?
+	println(country_by_id)
 }

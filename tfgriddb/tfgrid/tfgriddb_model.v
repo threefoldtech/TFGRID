@@ -47,3 +47,13 @@ pub struct TFGridFarmer{
 	city_id u32 [json: cityId]
 	pricing_policy_id u32 [json: pricingPolicyId]
 }
+
+pub struct Country {
+	name string [json: name]
+	code string [json: code]
+}
+
+pub struct City {
+	name string [json: name]
+	country_id string [json: countryId]
+}
