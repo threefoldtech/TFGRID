@@ -39,6 +39,19 @@ fn main () {
 	countries_by_name_substring := tfgrid.countries_by_name_substring("elgium")?
 	println(countries_by_name_substring)
 
-	country_by_id := tfgrid.countries_by_id(65)?
+	country_by_id := tfgrid.country_by_id(65)?
 	println(country_by_id)
+
+	cities := tfgrid.cities_list()?
+	println(cities)
+	
+	// Search for cities with substring "hent"
+	cities_by_name_substring := tfgrid.cities_by_name_substring("hent")?
+	println(cities_by_name_substring)
+
+	city_by_id := tfgrid.city_by_id(65)?
+	println(city_by_id)
+
+	cities_by_country_id := tfgrid.cities_by_country_id(65)?
+	println(cities_by_country_id)
 }

@@ -65,8 +65,24 @@ pub fn (mut grid TFGrid) countries_by_name_substring(subtring string) ?[]Country
 	return grid.explorer.countries_by_name_substring(subtring)
 }
 
-pub fn (mut grid TFGrid) countries_by_id(id u32) ?Country {
-	return grid.explorer.countries_by_id(id)
+pub fn (mut grid TFGrid) country_by_id(id u32) ?Country {
+	return grid.explorer.country_by_id(id)
+}
+
+pub fn (mut grid TFGrid) cities_list() ?[]City {
+	return grid.explorer.cities_list()
+}
+
+pub fn (mut grid TFGrid) cities_by_name_substring(subtring string) ?[]City {
+	return grid.explorer.cities_by_name_substring(subtring)
+}
+
+pub fn (mut grid TFGrid) city_by_id(id u32) ?City {
+	return grid.explorer.city_by_id(id)
+}
+
+pub fn (mut grid TFGrid) cities_by_country_id(id u32) ?[]City {
+	return grid.explorer.cities_by_country_id(id)
 }
 
 // TODO: arguments to be added

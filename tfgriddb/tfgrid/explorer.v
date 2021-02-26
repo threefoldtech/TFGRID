@@ -31,6 +31,7 @@ struct Body {
 	nodes []TFGridNode
 	farms []TFGridFarmer
 	countries []Country
+	cities []City
 }
 
 pub fn (mut explorer Explorer) entity_list() ? []TFGridEntity {
@@ -244,7 +245,7 @@ pub fn (mut explorer Explorer) countries_by_name_substring(substring string) ? [
 	return data.data.countries
 }
 
-pub fn (mut explorer Explorer) countries_by_id(id u32) ? Country {
+pub fn (mut explorer Explorer) country_by_id(id u32) ? Country {
 	mut query := GraphqlQuery{
 		query: '{ countries(where: { id_eq: $id }) { name, code } }',
 		operation: 'getAll'
@@ -265,6 +266,81 @@ pub fn (mut explorer Explorer) countries_by_id(id u32) ? Country {
 		eprintln('no country found')
 		return Country{}
 	}
+}
+
+pub fn (mut explorer Explorer) cities_list() ? []City {
+	mut query := GraphqlQuery{
+		query: '{ cities(limit: 10000) { name, countryId } }',
+		operation: 'getAll'
+	}
+
+	req := make_post_request_query(explorer.ipaddr, query)?
+	
+	res := req.do() ?
+
+	data := json.decode(ReqData, res.text) or {
+		eprintln('failed to decode json')
+		return []City{}
+	}
+	return data.data.cities
+}
+
+pub fn (mut explorer Explorer) cities_by_name_substring(substring string) ? []City {
+	mut query := GraphqlQuery{
+		query: '{ cities(where: { name_contains: "$substring" }) { name, countryId } }',
+		operation: 'getAll'
+	}
+
+	req := make_post_request_query(explorer.ipaddr, query)?
+
+	res := req.do() ?
+
+	data := json.decode(ReqData, res.text) or {
+		eprintln('failed to decode json')
+		return []City{}
+	}
+	return data.data.cities
+}
+
+pub fn (mut explorer Explorer) city_by_id(id u32) ? City {
+	mut query := GraphqlQuery{
+		query: '{ cities(where: { id_eq: $id }) { name, countryId } }',
+		operation: 'getAllById'
+	}
+
+	req := make_post_request_query(explorer.ipaddr, query)?
+
+	res := req.do() ?
+
+	data := json.decode(ReqData, res.text) or {
+		eprintln('failed to decode json')
+		return City{}
+	}
+
+	if data.data.cities.len > 0 {
+		return data.data.cities[0]
+	} else {
+		eprintln('no city found')
+		return City{}
+	}
+}
+
+pub fn (mut explorer Explorer) cities_by_country_id(country_id u32) ? []City {
+	mut query := GraphqlQuery{
+		query: '{ cities(where: { countryId_eq: $country_id }) { name, countryId } }',
+		operation: 'getAllByCountryId'
+	}
+
+	req := make_post_request_query(explorer.ipaddr, query)?
+
+	res := req.do() ?
+
+	data := json.decode(ReqData, res.text) or {
+		eprintln('failed to decode json')
+		return []City{}
+	}
+
+	return data.data.cities
 }
 
 pub fn make_post_request_query(url string, query GraphqlQuery) ?http.Request {
