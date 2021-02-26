@@ -49,7 +49,7 @@ pub fn (mut explorer Explorer) entity_list() ? []TFGridEntity {
 	return data.data.entities
 }
 
-pub fn (mut explorer Explorer) entity_by_id (id string) ? TFGridEntity {
+pub fn (mut explorer Explorer) entity_by_id (id u32) ? TFGridEntity {
 	mut query := GraphqlQuery{
 		query: '{ entities(where: {entityId_eq: $id }) { name, entityId, name, gridVersion, countryId, cityId } }',
 		operation: 'getOne',
@@ -89,7 +89,7 @@ pub fn (mut explorer Explorer) twin_list() ? []TFGridTwin {
 	return data.data.twins
 }
 
-pub fn (mut explorer Explorer) twin_by_id (id string) ? TFGridTwin {
+pub fn (mut explorer Explorer) twin_by_id (id u32) ? TFGridTwin {
 	mut query := GraphqlQuery{
 		query: '{ twins(where: {twinId_eq: $id }) { twinId, ip, gridVersion, address } }',
 		operation: 'getOne',
@@ -129,7 +129,7 @@ pub fn (mut explorer Explorer) nodes_list() ? []TFGridNode {
 	return data.data.nodes
 }
 
-pub fn (mut explorer Explorer) node_by_id (id string) ? TFGridNode {
+pub fn (mut explorer Explorer) node_by_id (id u32) ? TFGridNode {
 	mut query := GraphqlQuery{
 		query: '{ nodes(where: { nodeId_eq: $id }) { gridVersion, nodeId, farmId, sru, cru, hru, mru, location{ latitude, longitude }, pubKey, address, countryId, cityId } }',
 		operation: 'getOne',
@@ -186,7 +186,7 @@ pub fn (mut explorer Explorer) farms_list() ? []TFGridFarmer {
 	return data.data.farms
 }
 
-pub fn (mut explorer Explorer) farm_by_id (id string) ? TFGridFarmer {
+pub fn (mut explorer Explorer) farm_by_id (id u32) ? TFGridFarmer {
 	mut query := GraphqlQuery{
 		query: '{ farms(where: { farmId_eq: $id }) { name, farmId, twinId, gridVersion, countryId, cityId, pricingPolicyId } }',
 		operation: 'getOne',

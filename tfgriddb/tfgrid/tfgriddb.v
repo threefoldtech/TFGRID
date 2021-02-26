@@ -25,7 +25,7 @@ pub fn (mut grid TFGrid) entity_list() ?[]TFGridEntity {
 	return grid.explorer.entity_list()
 }
 
-pub fn (mut grid TFGrid) entity_get_by_id(entity_id string) ?TFGridEntity {
+pub fn (mut grid TFGrid) entity_get_by_id(entity_id u32) ?TFGridEntity {
 	return grid.explorer.entity_by_id(entity_id)
 }
 
@@ -33,7 +33,7 @@ pub fn (mut grid TFGrid) twin_list() ?[]TFGridTwin {
 	return grid.explorer.twin_list()
 }
 
-pub fn (mut grid TFGrid) twin_get_by_id(twin_id string) ?TFGridTwin {
+pub fn (mut grid TFGrid) twin_get_by_id(twin_id u32) ?TFGridTwin {
 	return grid.explorer.twin_by_id(twin_id)
 }
 
@@ -41,7 +41,7 @@ pub fn (mut grid TFGrid) nodes_list() ?[]TFGridNode {
 	return grid.explorer.nodes_list()
 }
 
-pub fn (mut grid TFGrid) nodes_get_by_id(node_id string) ?TFGridNode {
+pub fn (mut grid TFGrid) nodes_get_by_id(node_id u32) ?TFGridNode {
 	return grid.explorer.node_by_id(node_id)
 }
 
@@ -53,7 +53,7 @@ pub fn (mut grid TFGrid) farms_list() ?[]TFGridFarmer {
 	return grid.explorer.farms_list()
 }
 
-pub fn (mut grid TFGrid) farm_get_by_id(farm_id string) ?TFGridFarmer {
+pub fn (mut grid TFGrid) farm_get_by_id(farm_id u32) ?TFGridFarmer {
 	return grid.explorer.farm_by_id(farm_id)
 }
 
