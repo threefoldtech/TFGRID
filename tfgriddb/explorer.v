@@ -1,4 +1,4 @@
-module tfgrid
+module tfgriddb
 
 import net.http
 import json
@@ -17,7 +17,7 @@ pub fn explorer_new() ?Explorer {
 
 struct GraphqlQuery {
 mut:
-	query string
+	query     string
 	operation string
 }
 
@@ -26,22 +26,22 @@ struct ReqData {
 }
 
 struct Body {
-	entities []TFGridEntity
-	twins []TFGridTwin
-	nodes []TFGridNode
-	farms []TFGridFarmer
+	entities  []TFGridEntity
+	twins     []TFGridTwin
+	nodes     []TFGridNode
+	farms     []TFGridFarmer
 	countries []Country
-	cities []City
+	cities    []City
 }
 
-pub fn (mut explorer Explorer) entity_list() ? []TFGridEntity {
+pub fn (mut explorer Explorer) entity_list() ?[]TFGridEntity {
 	mut query := GraphqlQuery{
-		query: '{ entities { name, entityId, name, gridVersion, countryId, cityId } }',
+		query: '{ entities { name, entityId, name, gridVersion, countryId, cityId } }'
 		operation: 'getAll'
 	}
 
-	req := make_post_request_query(explorer.ipaddr, query)?
-	
+	req := make_post_request_query(explorer.ipaddr, query) ?
+
 	res := req.do() ?
 
 	data := json.decode(ReqData, res.text) or {
@@ -51,13 +51,13 @@ pub fn (mut explorer Explorer) entity_list() ? []TFGridEntity {
 	return data.data.entities
 }
 
-pub fn (mut explorer Explorer) entity_by_id (id u32) ? TFGridEntity {
+pub fn (mut explorer Explorer) entity_by_id(id u32) ?TFGridEntity {
 	mut query := GraphqlQuery{
-		query: '{ entities(where: {entityId_eq: $id }) { name, entityId, name, gridVersion, countryId, cityId } }',
-		operation: 'getOne',
+		query: '{ entities(where: {entityId_eq: $id }) { name, entityId, name, gridVersion, countryId, cityId } }'
+		operation: 'getOne'
 	}
 
-	req := make_post_request_query(explorer.ipaddr, query)?
+	req := make_post_request_query(explorer.ipaddr, query) ?
 
 	res := req.do() ?
 
@@ -74,14 +74,14 @@ pub fn (mut explorer Explorer) entity_by_id (id u32) ? TFGridEntity {
 	}
 }
 
-pub fn (mut explorer Explorer) twin_list() ? []TFGridTwin {
+pub fn (mut explorer Explorer) twin_list() ?[]TFGridTwin {
 	mut query := GraphqlQuery{
-		query: '{ twins { twinId, ip, gridVersion, address } }',
+		query: '{ twins { twinId, ip, gridVersion, address } }'
 		operation: 'getAll'
 	}
 
-	req := make_post_request_query(explorer.ipaddr, query)?
-	
+	req := make_post_request_query(explorer.ipaddr, query) ?
+
 	res := req.do() ?
 
 	data := json.decode(ReqData, res.text) or {
@@ -91,13 +91,13 @@ pub fn (mut explorer Explorer) twin_list() ? []TFGridTwin {
 	return data.data.twins
 }
 
-pub fn (mut explorer Explorer) twin_by_id (id u32) ? TFGridTwin {
+pub fn (mut explorer Explorer) twin_by_id(id u32) ?TFGridTwin {
 	mut query := GraphqlQuery{
-		query: '{ twins(where: {twinId_eq: $id }) { twinId, ip, gridVersion, address } }',
-		operation: 'getOne',
+		query: '{ twins(where: {twinId_eq: $id }) { twinId, ip, gridVersion, address } }'
+		operation: 'getOne'
 	}
 
-	req := make_post_request_query(explorer.ipaddr, query)?
+	req := make_post_request_query(explorer.ipaddr, query) ?
 
 	res := req.do() ?
 
@@ -114,14 +114,14 @@ pub fn (mut explorer Explorer) twin_by_id (id u32) ? TFGridTwin {
 	}
 }
 
-pub fn (mut explorer Explorer) nodes_list() ? []TFGridNode {
+pub fn (mut explorer Explorer) nodes_list() ?[]TFGridNode {
 	mut query := GraphqlQuery{
-		query: '{ nodes { gridVersion, nodeId, farmId, sru, cru, hru, mru, location{ latitude, longitude }, pubKey, address, countryId, cityId } }',
+		query: '{ nodes { gridVersion, nodeId, farmId, sru, cru, hru, mru, location{ latitude, longitude }, pubKey, address, countryId, cityId } }'
 		operation: 'getAll'
 	}
 
-	req := make_post_request_query(explorer.ipaddr, query)?
-	
+	req := make_post_request_query(explorer.ipaddr, query) ?
+
 	res := req.do() ?
 
 	data := json.decode(ReqData, res.text) or {
@@ -131,13 +131,13 @@ pub fn (mut explorer Explorer) nodes_list() ? []TFGridNode {
 	return data.data.nodes
 }
 
-pub fn (mut explorer Explorer) node_by_id (id u32) ? TFGridNode {
+pub fn (mut explorer Explorer) node_by_id(id u32) ?TFGridNode {
 	mut query := GraphqlQuery{
-		query: '{ nodes(where: { nodeId_eq: $id }) { gridVersion, nodeId, farmId, sru, cru, hru, mru, location{ latitude, longitude }, pubKey, address, countryId, cityId } }',
-		operation: 'getOne',
+		query: '{ nodes(where: { nodeId_eq: $id }) { gridVersion, nodeId, farmId, sru, cru, hru, mru, location{ latitude, longitude }, pubKey, address, countryId, cityId } }'
+		operation: 'getOne'
 	}
 
-	req := make_post_request_query(explorer.ipaddr, query)?
+	req := make_post_request_query(explorer.ipaddr, query) ?
 
 	res := req.do() ?
 
@@ -154,13 +154,13 @@ pub fn (mut explorer Explorer) node_by_id (id u32) ? TFGridNode {
 	}
 }
 
-pub fn (mut explorer Explorer) nodes_by_resources (sru u32, cru u32, hru u32, mru u32) ? []TFGridNode {
+pub fn (mut explorer Explorer) nodes_by_resources(sru u32, cru u32, hru u32, mru u32) ?[]TFGridNode {
 	mut query := GraphqlQuery{
-		query: '{ nodes(where: { sru_gt: $sru, cru_gt: $cru, hru_gt: $hru, mru_gt: $mru }) { gridVersion, nodeId, farmId, sru, cru, hru, mru, location{ latitude, longitude }, pubKey, address, countryId, cityId } }',
+		query: '{ nodes(where: { sru_gt: $sru, cru_gt: $cru, hru_gt: $hru, mru_gt: $mru }) { gridVersion, nodeId, farmId, sru, cru, hru, mru, location{ latitude, longitude }, pubKey, address, countryId, cityId } }'
 		operation: 'getAll'
 	}
 
-	req := make_post_request_query(explorer.ipaddr, query)?
+	req := make_post_request_query(explorer.ipaddr, query) ?
 
 	res := req.do() ?
 
@@ -171,14 +171,14 @@ pub fn (mut explorer Explorer) nodes_by_resources (sru u32, cru u32, hru u32, mr
 	return data.data.nodes
 }
 
-pub fn (mut explorer Explorer) farms_list() ? []TFGridFarmer {
+pub fn (mut explorer Explorer) farms_list() ?[]TFGridFarmer {
 	mut query := GraphqlQuery{
-		query: '{ farms { name, farmId, twinId, gridVersion, countryId, cityId, pricingPolicyId } }',
+		query: '{ farms { name, farmId, twinId, gridVersion, countryId, cityId, pricingPolicyId } }'
 		operation: 'getAll'
 	}
 
-	req := make_post_request_query(explorer.ipaddr, query)?
-	
+	req := make_post_request_query(explorer.ipaddr, query) ?
+
 	res := req.do() ?
 
 	data := json.decode(ReqData, res.text) or {
@@ -188,13 +188,13 @@ pub fn (mut explorer Explorer) farms_list() ? []TFGridFarmer {
 	return data.data.farms
 }
 
-pub fn (mut explorer Explorer) farm_by_id (id u32) ? TFGridFarmer {
+pub fn (mut explorer Explorer) farm_by_id(id u32) ?TFGridFarmer {
 	mut query := GraphqlQuery{
-		query: '{ farms(where: { farmId_eq: $id }) { name, farmId, twinId, gridVersion, countryId, cityId, pricingPolicyId } }',
-		operation: 'getOne',
+		query: '{ farms(where: { farmId_eq: $id }) { name, farmId, twinId, gridVersion, countryId, cityId, pricingPolicyId } }'
+		operation: 'getOne'
 	}
 
-	req := make_post_request_query(explorer.ipaddr, query)?
+	req := make_post_request_query(explorer.ipaddr, query) ?
 
 	res := req.do() ?
 
@@ -211,30 +211,13 @@ pub fn (mut explorer Explorer) farm_by_id (id u32) ? TFGridFarmer {
 	}
 }
 
-pub fn (mut explorer Explorer) countries_list() ? []Country {
+pub fn (mut explorer Explorer) countries_list() ?[]Country {
 	mut query := GraphqlQuery{
-		query: '{ countries(limit: 10000) { name, code } }',
+		query: '{ countries(limit: 10000) { name, code } }'
 		operation: 'getAll'
 	}
 
-	req := make_post_request_query(explorer.ipaddr, query)?
-	
-	res := req.do() ?
-
-	data := json.decode(ReqData, res.text) or {
-		eprintln('failed to decode json')
-		return []Country{}
-	}
-	return data.data.countries
-}
-
-pub fn (mut explorer Explorer) countries_by_name_substring(substring string) ? []Country {
-	mut query := GraphqlQuery{
-		query: '{ countries(where: { name_contains: "$substring" }) { name, code } }',
-		operation: 'getAll'
-	}
-
-	req := make_post_request_query(explorer.ipaddr, query)?
+	req := make_post_request_query(explorer.ipaddr, query) ?
 
 	res := req.do() ?
 
@@ -245,13 +228,30 @@ pub fn (mut explorer Explorer) countries_by_name_substring(substring string) ? [
 	return data.data.countries
 }
 
-pub fn (mut explorer Explorer) country_by_id(id u32) ? Country {
+pub fn (mut explorer Explorer) countries_by_name_substring(substring string) ?[]Country {
 	mut query := GraphqlQuery{
-		query: '{ countries(where: { id_eq: $id }) { name, code } }',
+		query: '{ countries(where: { name_contains: "$substring" }) { name, code } }'
 		operation: 'getAll'
 	}
 
-	req := make_post_request_query(explorer.ipaddr, query)?
+	req := make_post_request_query(explorer.ipaddr, query) ?
+
+	res := req.do() ?
+
+	data := json.decode(ReqData, res.text) or {
+		eprintln('failed to decode json')
+		return []Country{}
+	}
+	return data.data.countries
+}
+
+pub fn (mut explorer Explorer) country_by_id(id u32) ?Country {
+	mut query := GraphqlQuery{
+		query: '{ countries(where: { id_eq: $id }) { name, code } }'
+		operation: 'getAll'
+	}
+
+	req := make_post_request_query(explorer.ipaddr, query) ?
 
 	res := req.do() ?
 
@@ -268,30 +268,13 @@ pub fn (mut explorer Explorer) country_by_id(id u32) ? Country {
 	}
 }
 
-pub fn (mut explorer Explorer) cities_list() ? []City {
+pub fn (mut explorer Explorer) cities_list() ?[]City {
 	mut query := GraphqlQuery{
-		query: '{ cities(limit: 10000) { name, countryId } }',
+		query: '{ cities(limit: 10000) { name, countryId } }'
 		operation: 'getAll'
 	}
 
-	req := make_post_request_query(explorer.ipaddr, query)?
-	
-	res := req.do() ?
-
-	data := json.decode(ReqData, res.text) or {
-		eprintln('failed to decode json')
-		return []City{}
-	}
-	return data.data.cities
-}
-
-pub fn (mut explorer Explorer) cities_by_name_substring(substring string) ? []City {
-	mut query := GraphqlQuery{
-		query: '{ cities(where: { name_contains: "$substring" }) { name, countryId } }',
-		operation: 'getAll'
-	}
-
-	req := make_post_request_query(explorer.ipaddr, query)?
+	req := make_post_request_query(explorer.ipaddr, query) ?
 
 	res := req.do() ?
 
@@ -302,13 +285,30 @@ pub fn (mut explorer Explorer) cities_by_name_substring(substring string) ? []Ci
 	return data.data.cities
 }
 
-pub fn (mut explorer Explorer) city_by_id(id u32) ? City {
+pub fn (mut explorer Explorer) cities_by_name_substring(substring string) ?[]City {
 	mut query := GraphqlQuery{
-		query: '{ cities(where: { id_eq: $id }) { name, countryId } }',
+		query: '{ cities(where: { name_contains: "$substring" }) { name, countryId } }'
+		operation: 'getAll'
+	}
+
+	req := make_post_request_query(explorer.ipaddr, query) ?
+
+	res := req.do() ?
+
+	data := json.decode(ReqData, res.text) or {
+		eprintln('failed to decode json')
+		return []City{}
+	}
+	return data.data.cities
+}
+
+pub fn (mut explorer Explorer) city_by_id(id u32) ?City {
+	mut query := GraphqlQuery{
+		query: '{ cities(where: { id_eq: $id }) { name, countryId } }'
 		operation: 'getAllById'
 	}
 
-	req := make_post_request_query(explorer.ipaddr, query)?
+	req := make_post_request_query(explorer.ipaddr, query) ?
 
 	res := req.do() ?
 
@@ -325,13 +325,13 @@ pub fn (mut explorer Explorer) city_by_id(id u32) ? City {
 	}
 }
 
-pub fn (mut explorer Explorer) cities_by_country_id(country_id u32) ? []City {
+pub fn (mut explorer Explorer) cities_by_country_id(country_id u32) ?[]City {
 	mut query := GraphqlQuery{
-		query: '{ cities(where: { countryId_eq: $country_id }) { name, countryId } }',
+		query: '{ cities(where: { countryId_eq: $country_id }) { name, countryId } }'
 		operation: 'getAllByCountryId'
 	}
 
-	req := make_post_request_query(explorer.ipaddr, query)?
+	req := make_post_request_query(explorer.ipaddr, query) ?
 
 	res := req.do() ?
 

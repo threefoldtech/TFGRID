@@ -1,7 +1,9 @@
 module tfgrid
 
-pub struct ZDB {
+pub struct ReqZDB {
 pub mut:
+	// name unique per deployment, re-used in request & response
+	name string
 	// name to be used for namespaces
 	// in ZDB itself it will be $deploymentid_$name
 	namespace string
@@ -18,8 +20,10 @@ enum DiskType {
 	ssd
 }
 
-pub struct ZDBResult {
+pub struct ResZDB {
 pub mut:
+	// name unique per deployment, re-used in request & response
+	name      string
 	namespace string
 	ips       []string
 	port      u32

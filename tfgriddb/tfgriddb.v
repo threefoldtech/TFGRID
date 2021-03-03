@@ -1,4 +1,4 @@
-module tfgrid
+module tfgriddb
 
 // commands which are execute by our digital twin and it serves as proxy to the TFGrid DB
 // we do this because we don't have client for parity
