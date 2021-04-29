@@ -5,7 +5,7 @@ import crypto.md5
 
 // ZOS will execute on a deployment (only for deployment items relevant for that 3node)
 // ZOS will report back on items achieved
-// need to define if this will be done once per deployment or item per item 
+// need to define if this will be done once per deployment or item per item
 // the structure allows both
 pub struct Response {
 pub mut:
@@ -26,7 +26,7 @@ pub mut:
 	// this string will be signed by Zero-OS when returning the response
 	signature_hash string
 	// bytestr signature ed25519 as done by Zero-OS = 3Node or whoever gives out the reservation
-	// used to let the digital twin who receives this message to validate 
+	// used to let the digital twin who receives this message to validate
 	signature string
 }
 

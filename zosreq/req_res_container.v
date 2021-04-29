@@ -11,7 +11,7 @@ pub mut:
 	entrypoint        string
 	corex_enabled     bool
 	mounts            []ReqVolumeMount
-	networkinterfaces NetworkInterfaces
+	networkinterfaces []NetworkInterface
 	capacity          ComputeCapacity
 	log_destinations  []LogDestination
 	stat_destinations []StatDestination

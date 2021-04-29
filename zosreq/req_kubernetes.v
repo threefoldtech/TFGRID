@@ -9,7 +9,7 @@ pub mut:
 	clustersecret string
 	// ip address of the master for this cluster, if empty becomes master himself
 	masterips         []string
-	networkinterfaces NetworkInterfaces
+	networkinterfaces []NetworkInterface
 	capacity          ComputeCapacity
 	log_destinations  []LogDestination
 	stat_destinations []StatDestination

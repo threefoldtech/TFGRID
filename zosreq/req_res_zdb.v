@@ -1,4 +1,4 @@
-module tfgrid
+module zosreq
 
 pub struct ReqZDB {
 pub mut:

@@ -4,7 +4,7 @@ pub struct ReqVM {
 pub mut:
 	// name unique per deployment, re-used in request & response
 	name              string
-	networkinterfaces NetworkInterfaces
+	networkinterfaces []NetworkInterface
 	capacity          ComputeCapacity
 	log_destinations  []LogDestination
 	stat_destinations []StatDestination

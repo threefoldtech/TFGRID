@@ -9,7 +9,7 @@ pub struct ReqDeployment {
 pub mut:
 	// increments for each new interation of this model
 	// signature needs to be achieved when version goes up
-	version int
+	version int = 1
 	// the twin who is responsible for this deployment
 	originator_twin_id int
 	// each deployment has unique id (in relation to originator)
@@ -30,7 +30,7 @@ pub mut:
 
 // fills in all variables and make sure all is good so the object can be submmitted to a Zero-OS
 pub fn (mut deployment ReqDeployment) submit() {
-	deployment.signature_hash = deployment.signature_hash()
+	deployment.signature_hash()
 }
 
 fn (mut deployment ReqDeployment) signature_hash() {
@@ -100,7 +100,7 @@ pub mut:
 pub struct PaymentRequest {
 	// unique id as used in TFGrid DB
 	twin_id int
-	// secret is encrypted by means of public key of the twin who needs to do the payment 
+	// secret is encrypted by means of public key of the twin who needs to do the payment
 	// that secret is used to let the paying digital twin verify if payment is valid
 	// can be empty, which means there is no secret, payment will done if payment processor is willing to pay to that farmer
 	secret string
