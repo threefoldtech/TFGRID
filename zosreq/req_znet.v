@@ -1,6 +1,9 @@
 module zosreq
 
-pub struct ReqZOSNetwork {
+
+// wg network reservation (znet)
+
+pub struct ReqZnet {
 pub mut:
 	// name unique per deployment, re-used in request & response
 	name string

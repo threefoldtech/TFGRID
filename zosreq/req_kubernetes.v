@@ -8,10 +8,12 @@ pub mut:
 	// plainclustersecret
 	clustersecret string
 	// ip address of the master for this cluster, if empty becomes master himself
-	masterips         []string
+	masterips         []string  // does this mean we will support HA k8s as primitive?
 	networkinterfaces []NetworkInterface
 	capacity          ComputeCapacity
 	log_destinations  []LogDestination
 	stat_destinations []StatDestination
 	sshkeys           []string
+	datastore_endpoint string
+	disable_default_ingress bool
 }
