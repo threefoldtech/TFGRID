@@ -3,11 +3,15 @@
 
 module zosreq
 
+// ONLY possible on SSD
 pub struct ReqZmount {
 pub mut:
 	// name unique per deployment, re-used in request & response
 	name string
-	size u64 //mb	
+	// size in MB
+	// is permanent diskspace as	
+	size u32 //mb	
 
 }
+
 
