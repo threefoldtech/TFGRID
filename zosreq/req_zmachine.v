@@ -4,13 +4,13 @@ pub struct ReqZmachine {
 pub mut:
 	// name unique per deployment, re-used in request & response
 	name              string
-	networkinterfaces []NetworkInterface
+	network 		  ZMachineNetwork
 	capacity          ComputeCapacity
 	log_destinations  []LogDestination
 	stat_destinations []StatDestination
 	sshkeys           []string
 	flist             string // if full url means custom flist meant for containers, if just name should be an official vm
-	mode			  ZMachineMode	
+	mode			  ZMachineMode
 	enable_corex	  bool   // used to be called interactive. enables corex or not
 	env         	  map[string]string //environment for the zmachine
 	secretenv         map[string]string
@@ -20,7 +20,7 @@ pub mut:
 }
 
 enum ZMachineMode {
-	container 
+	container
 	vm
 }
 
@@ -30,7 +30,6 @@ pub struct Mount {
 		zmount_name string
 		mountpoint string
 }
-
 
 
 
