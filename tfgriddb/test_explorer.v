@@ -1,8 +1,8 @@
-module main
+module tfgriddb
 
 import tfgriddb
 
-fn main() {
+fn test_tfgrid() ? {
 	mut tfgrid := tfgriddb.tfgrid_new() ?
 
 	entities := tfgrid.entity_list() ?
