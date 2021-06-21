@@ -347,7 +347,7 @@ pub fn make_post_request_query(url string, query GraphqlQuery) ?http.Request {
 	post := http.method_from_str('POST')
 	data := json.encode(query)
 	mut req := http.new_request(post, url, data) ?
-	req.add_header('Content-Type', 'application/json')
+	req.add_header(http.CommonHeader.content_type, 'application/json')
 
 	return req
 }

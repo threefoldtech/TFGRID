@@ -11,6 +11,7 @@ pub struct TFGridEntity {
 }
 
 pub struct TFGridTwin {
+pub:
 	id           u32    [json: twinId]
 	ip           string [json: ip]
 	grid_version u32    [json: gridVersion]
