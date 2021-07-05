@@ -49,7 +49,6 @@ pub struct RequestItem {
 pub mut:
 	// unique name per Deployment
 	name     string
-	node_id  int
 	category Category
 	// in epoch format
 	json_data string
