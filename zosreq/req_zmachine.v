@@ -2,21 +2,26 @@ module zosreq
 
 pub struct ReqZmachine {
 pub mut:
-	// name unique per deployment, re-used in request & response
-	name              string
-	network 		  ZMachineNetwork
-	capacity          ComputeCapacity
-	log_destinations  []LogDestination
-	stat_destinations []StatDestination
-	sshkeys           []string
 	flist             string // if full url means custom flist meant for containers, if just name should be an official vm
-	mode			  ZMachineMode
-	enable_corex	  bool   // used to be called interactive. enables corex or not
-	env         	  map[string]string //environment for the zmachine
-	secretenv         map[string]string
-	hub_url			  string
-	entrypoint		  string //how to invoke that in a vm?
+	network 		  ZMachineNetwork
+	size              u8
+	compute_capacity  ComputeCapacity
 	mounts  		 []Mount
+	entrypoint		  string //how to invoke that in a vm?
+	env         	  map[string]string //environment for the zmachine
+}
+
+pub struct ZMachineNetwork{
+pub mut:
+	public_ip		 string
+	interfaces       []ZNetworkInterface
+	planetary		 bool
+}
+
+pub struct ZNetworkInterface{
+pub mut:
+	network          string
+	ip               string
 }
 
 enum ZMachineMode {
@@ -26,9 +31,9 @@ enum ZMachineMode {
 
 
 pub struct Mount {
-	pub mut:
-		zmount_name string
-		mountpoint string
+pub mut:
+	name       string
+	mountpoint string
 }
 
 
@@ -37,9 +42,6 @@ pub struct Mount {
 pub struct ResZMachine {
 pub mut:
 	// name unique per deployment, re-used in request & response
-	name         string
-	public_ipv4 string[]
-	public_ipv6 string[]
-	private_ipv6 string
-	pan_ip6      string
+	id      string
+	ip      string
 }
