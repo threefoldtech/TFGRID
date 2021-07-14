@@ -11,21 +11,19 @@ pub mut:
 	// signature needs to be achieved when version goes up
 	version int = 1
 	// the twin who is responsible for this deployment
-	originator_twin_id int
+	twin_id u32
 	// each deployment has unique id (in relation to originator)
-	originator_deployment_id int
+	contract_id u64
 	// when the full workload will stop working
 	// default, 0 means no expiration
-	expiration int
-	// list of all deployments
-	deployment_requests []RequestItem
-	// md5 hash of the concatenation of the deployment items (see implementatio)
-	// this string will be signed by the signers
-	signature_hash        string
+	expiration i64
+	metadata string
+	description string
+
+	// list of all worklaods
+	workloads []Workload
+
 	signature_requirement SignatureRequirement
-	// information to allow digital twin's to pay for this workload
-	// can be more than one, the farmer bot will try all payment providers untill payment done
-	payment_providers []PaymentRequest
 }
 
 // fills in all variables and make sure all is good so the object can be submmitted to a Zero-OS
@@ -45,29 +43,44 @@ fn (mut deployment ReqDeployment) signature_hash() {
 	deployment.signature_hash = md5.hexhash(out.join('\n'))
 }
 
-pub struct RequestItem {
+pub struct Workload {
 pub mut:
+	version int
 	// unique name per Deployment
 	name     string
-	node_id  int
 	category Category
-	// in epoch format
-	json_data string
+	// this should be something like json.RawMessage in golang
+	data string // serialize({size: 10}) ---> "data": {size:10},
+	metadata string
+	description string
+
 	// list of Access Control Entries
 	// what can an administrator do
+	// not implemented in zos
 	acl []ACE
-	// version can never be higher than the main version
-	// if lower then it means this item does not have to be upgraded (restarted with same date)
-	version int
+
+	result Result
 }
 
+pub struct Result {
+pub mut:
+	created i64
+	state State
+	error string
+	data Object // also json.RawMessage
+}
+
+pub enum State {
+	error
+	ok
+	deleted
+}
 pub enum Category {
-	container
-	volume
+	zmachine
+	zmount
 	network
 	zdb
-	kubernetes
-	public_ip
+	ipv4
 }
 
 pub struct SignatureRequirement {
@@ -97,14 +110,6 @@ pub mut:
 	signature string
 }
 
-pub struct PaymentRequest {
-	// unique id as used in TFGrid DB
-	twin_id int
-	// secret is encrypted by means of public key of the twin who needs to do the payment
-	// that secret is used to let the paying digital twin verify if payment is valid
-	// can be empty, which means there is no secret, payment will done if payment processor is willing to pay to that farmer
-	secret string
-}
 
 // Access Control Entry
 pub struct ACE {

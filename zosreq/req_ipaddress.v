@@ -1,19 +1,10 @@
 module zosreq
 
-pub struct ReqIPAddresses {
-pub:
-	// name unique per deployment, re-used in request & response
-	name     string
-	requests []ReqIPAddress
-}
-
 pub struct ReqIPAddress {
 pub:
-	// id as given by the user who requests it
-	name string
-	// epoch when expiration
-	expiration int
-	cat        IpAddressType = IpAddressType.ipv4
+	// no attributes needed, the contract will
+	// find the first available free public ip
+	// and the node is gonna use it
 }
 
 // response from the farmer (digital twin)
