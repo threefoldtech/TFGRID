@@ -1,7 +1,7 @@
 import zosreq
 
 fn main() {
-	mut zosnetwork := zosreq.ReqZOSNetwork{
+	mut zosnetwork := zosreq.ReqZnet{
 		name: 'core_tf1'
 		subnet: ''
 		wg_private_key: ''
