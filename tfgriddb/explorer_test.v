@@ -1,4 +1,3 @@
-module tfgriddb
 
 import tfgriddb
 
@@ -54,4 +53,14 @@ fn test_tfgrid() ? {
 
 	cities_by_country_id := tfgrid.cities_by_country_id(65) ?
 	println(cities_by_country_id)
+
+	// Get nodes by country or city 
+	mut geo_location := tfgriddb.GeoLocation{}
+  	geo_location.country_name = "Albania"
+  	mut nodes_by_country_city := tfgrid.nodes_by_country_city(geo_location)?
+	println(nodes_by_country_city)
+
+	// Get nodes by location 
+	mut nodes_by_location := tfgrid.nodes_by_location("50.85","4.35")?
+	println(nodes_by_location)
 }

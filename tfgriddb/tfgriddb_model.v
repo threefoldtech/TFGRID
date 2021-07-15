@@ -77,11 +77,15 @@ pub struct PublicIP {
 }
 
 pub struct Country {
+	pub:
+	id string [json: id]
 	name string [json: name]
 	code string [json: code]
 }
 
 pub struct City {
+	pub:
+	id string [json: id]
 	name       string [json: name]
 	country_id string [json: countryId]
 }
@@ -95,3 +99,9 @@ pub struct PricingPolicy {
 	cu			      u32
 	nu                u32
 }
+
+pub struct GeoLocation{
+	pub mut:
+		city_name string
+		country_name string
+	}
