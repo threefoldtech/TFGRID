@@ -36,4 +36,4 @@ USER gitpod
 # #need to do 2 times, leave as this
 # RUN publishtools flatten
 
-ENTRYPOINT [ "entrypoint.sh" ]
+# ENTRYPOINT [ "entrypoint.sh" ]
