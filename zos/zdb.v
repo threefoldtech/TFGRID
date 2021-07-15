@@ -31,9 +31,17 @@ pub mut:
 	public    bool
 }
 
-pub fn(mut zdb Zdb) challenge() string {
-	// TODO
-	return ""
+pub fn(mut z Zdb) challenge() string {
+
+	mut out := ""
+	out += '$z.size'
+	out += '$z.mode'
+	out += z.password
+	out += '$z.disk_type'
+	out += '$z.public'
+
+	return out
+
 }
 
 pub struct ZdbResult {
