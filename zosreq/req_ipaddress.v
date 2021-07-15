@@ -1,7 +1,6 @@
 module zosreq
 
 pub struct ReqIPAddress {
-pub:
 	// no attributes needed, the contract will
 	// find the first available free public ip
 	// and the node is gonna use it
