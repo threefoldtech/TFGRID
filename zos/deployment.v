@@ -1,12 +1,12 @@
 module zos
 
 import crypto.md5
-
+import libsodium
 
 pub struct SignatureRequest {
 pub mut:
 	// unique id as used in TFGrid DB
-	twin_id int
+	twin_id u32
 	// if put on required then this twin_id needs to sign
 	required bool
 	// signing weight
@@ -26,7 +26,7 @@ pub fn(request SignatureRequest) challenge() string {
 pub struct Signature {
 pub mut:
 	// unique id as used in TFGrid DB
-	twin_id int
+	twin_id u32
 	// signature (done with private key of the twin_id)
 	signature string
 }
@@ -97,4 +97,20 @@ pub fn (mut deployment Deployment) challenge() string {
 // by the user. used for validation
 pub fn(mut deployment Deployment) challenge_hash() string {
 	return md5.hexhash(deployment.challenge())
+}
+
+pub fn(mut deployment Deployment) sign(twin u32, signing_key libsodium.SigningKey) {
+	message := deployment.challenge_hash()
+	signature := signing_key.sign(message.bytes()).hex()
+
+	for mut sig in deployment.signature_requirement.signatures {
+		if sig.twin_id == twin {
+			sig.signature = signature
+		}
+	}
+
+	deployment.signature_requirement.signatures << Signature{
+		twin_id: twin,
+		signature: signature
+	}
 }

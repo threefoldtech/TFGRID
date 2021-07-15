@@ -1,5 +1,5 @@
 module zos
-import x.json2
+import json
 
 pub struct WorkloadTypes {
 pub:
@@ -20,6 +20,39 @@ pub enum ResultState {
 	deleted
 }
 
+pub fn challenge(data string, type_ string) ?string {
+	match type_ {
+		workload_types.zmount {
+			mut w := json.decode(Zmount, data)?
+			return w.challenge()
+		}
+
+		workload_types.zdb {
+			mut w := json.decode(Zdb, data)?
+			return w.challenge()
+		}
+
+		// workload_types.zmount {
+		// 	mut w := json.decode(Zmount, data)
+		// 	return w.challenge()
+		// }
+
+		// workload_types.zmount {
+		// 	mut w := json.decode(Zmount, data)
+		// 	return w.challenge()
+		// }
+		else {
+			return ""
+		}
+	}
+}
+
+pub enum Right {
+	restart
+	delete
+	stats
+	logs
+}
 
 // Access Control Entry
 pub struct ACE {
@@ -28,19 +61,13 @@ pub struct ACE {
 	rights   []Right
 }
 
-enum Right {
-	restart
-	delete
-	stats
-	logs
-}
 
 pub struct DeploymentResult {
 pub mut:
 	created i64
 	state ResultState
 	error string
-	data WorkloadDataResult // also json.RawMessage
+	data string [raw] // also json.RawMessage
 }
 
 
@@ -51,16 +78,17 @@ pub mut:
 	name     string
 	type_    WorkloadType  [json:"type"]
 	// this should be something like json.RawMessage in golang
-	data     WorkloadData // serialize({size: 10}) ---> "data": {size:10},
+	data     string [raw] // serialize({size: 10}) ---> "data": {size:10},
+
 	metadata string
 	description string
 
 	// list of Access Control Entries
 	// what can an administrator do
 	// not implemented in zos
-	acl []ACE
+	// acl []ACE
 
-	result WorkloadDataResult
+	result string [raw]
 }
 
 
@@ -71,7 +99,9 @@ pub fn (mut workload Workload) challenge() string{
 	out << '$workload.type_'
 	out << '$workload.metadata'
 	out << '$workload.description'
-	out <<  workload.data.challenge()
+	out <<  challenge(workload.data, workload.type_) or {
+		return out.join('')
+	}
 
 	return out.join('')
 }
