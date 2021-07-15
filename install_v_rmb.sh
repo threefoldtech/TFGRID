@@ -15,5 +15,5 @@ git clone https://github.com/threefoldtech/vgrid /root/.vmodules/threefoldtech/v
 git clone https://github.com/threefoldtech/rmb /root/.vmodules/threefoldtech/rmb
 git clone https://github.com/crystaluniverse/crystallib /root/.vmodules/despiegk/crystallib
 
-cd /root/.vmodules/threefoldtech/rmb/msgbusd && sudo v msgbusd.v > msgbusd && sudo cp msgbusd /usr/local/bin 
+cd /root/.vmodules/threefoldtech/rmb/msgbusd && sudo v msgbusd.v && sudo cp msgbusd /usr/local/bin 
 
