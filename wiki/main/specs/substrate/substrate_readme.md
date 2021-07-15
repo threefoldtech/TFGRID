@@ -3,4 +3,4 @@
 ## 2 Components
 
 - [griddb](griddb)
-- [smartContract](./smartContract/smartContract.md)
+- [smartContract](contract)
