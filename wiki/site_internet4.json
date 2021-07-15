@@ -1,6 +1,7 @@
 [
 	{
 		"git_url": "https://github.com/threefoldfoundation/info_internet4",
+		"reset": true,
 		"name": "internet4",
 		"domains": [
 			"internet4.threefold.org"

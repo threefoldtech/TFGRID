@@ -19,7 +19,7 @@ The operation can be described as follows:
 - Once identity has been established, secure and trusted communication can be established between the different parties.
 - For a user to deploy a workload he need to do the following:
   - Create a **contract** on substrate
-    - The **contract** is described in more details [here](contract.md)
+    - The **contract** is described in more details [here](contract)
     - It also has required number of public IPs to be reserved from the farm (in case you have public ips in your deployment definition)
   - Substrate needs to validate the contract, user, funds and lock up required public ips from the farm object.
   - Once a contract is created, the contract **id + deployment** is sent to the node.

@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "../publishtools"
+		},
+		{
+			"path": "."
+		},
+		{
+			"path": "../../home/gitpod/codewiki"
+		},
+		{
+			"path": "../crystallib"
+		}
+	],
+	"settings": {}
+}
