@@ -171,6 +171,57 @@ pub fn (mut explorer Explorer) nodes_by_resources(sru u32, cru u32, hru u32, mru
 	return data.data.nodes
 }
 
+pub fn (mut explorer Explorer) nodes_by_location(latitude string, longitude string) ?[]TFGridNode {
+	mut query := GraphqlQuery{
+		query: '{ nodes(where: {location: { latitude_eq: "$latitude", longitude_eq: "$longitude" }}) { gridVersion, nodeId, farmId, twinId, countryId, cityId, sru, cru, hru, mru, role, location{ latitude, longitude }, publicConfig { ipv4, ipv6, gw4, gw6 }, address } }'
+		operation: 'getAll'
+	}
+
+	req := make_post_request_query(explorer.ipaddr, query) ?
+
+	res := req.do() ?
+
+	data := json.decode(ReqData, res.text) or {
+		eprintln('failed to decode json')
+		return []TFGridNode{}
+	}
+	return data.data.nodes
+}
+pub fn (mut explorer Explorer) nodes_by_country_city(geoLocation GeoLocation) ?[]TFGridNode {
+	mut sub_query:=""
+	if geoLocation.city_name!=""{
+		if city := explorer.city_by_name(geoLocation.city_name) {
+			sub_query+="cityId_eq: $city.id,"
+		}
+		else {
+			panic("invalid city name")
+		}
+	}
+	if geoLocation.country_name!=""{
+		if country := explorer.country_by_name(geoLocation.country_name){
+			sub_query+= "countryId_eq: $country.id,"
+		}
+		else{
+			panic("invalid country name")
+		}
+	}
+
+	mut query := GraphqlQuery{
+		query: '{ nodes(where: {$sub_query}) { gridVersion, nodeId, farmId, twinId, countryId, cityId, sru, cru, hru, mru, role, location{ latitude, longitude }, publicConfig { ipv4, ipv6, gw4, gw6 }, address } }'
+		operation: 'getAll'
+	}
+	
+	req := make_post_request_query(explorer.ipaddr, query) ?
+
+	res := req.do() ?
+
+	data := json.decode(ReqData, res.text) or {
+		eprintln('failed to decode json')
+		return []TFGridNode{}
+	}
+	return data.data.nodes
+}
+
 pub fn (mut explorer Explorer) farms_list() ?[]TFGridFarmer {
 	mut query := GraphqlQuery{
 		query: '{ farms { gridVersion, farmId, twinId, name, countryId, cityId, pricingPolicyId, certificationType } }'
@@ -244,6 +295,27 @@ pub fn (mut explorer Explorer) countries_by_name_substring(substring string) ?[]
 	}
 	return data.data.countries
 }
+pub fn (mut explorer Explorer) country_by_name(name string) ?Country {
+	mut query := GraphqlQuery{
+		query: '{ countries(where: { name_eq: "$name" }) { name, code, id } }'
+		operation: 'getOne'
+	}
+
+	req := make_post_request_query(explorer.ipaddr, query) ?
+
+	res := req.do() ?
+
+	data := json.decode(ReqData, res.text) or {
+		eprintln('failed to decode json')
+		return Country{}
+	}
+	if data.data.countries.len > 0 {
+		return data.data.countries[0]
+	} else {
+		eprintln('no country found with $name name')
+		return Country{}
+	}
+}
 
 pub fn (mut explorer Explorer) country_by_id(id u32) ?Country {
 	mut query := GraphqlQuery{
@@ -300,6 +372,27 @@ pub fn (mut explorer Explorer) cities_by_name_substring(substring string) ?[]Cit
 		return []City{}
 	}
 	return data.data.cities
+}
+pub fn (mut explorer Explorer) city_by_name(name string) ?City {
+	mut query := GraphqlQuery{
+		query: '{ cities(where: { name_eq: "$name" }) { name, countryId, id } }'
+		operation: 'getOne'
+	}
+
+	req := make_post_request_query(explorer.ipaddr, query) ?
+
+	res := req.do() ?
+
+	data := json.decode(ReqData, res.text) or {
+		eprintln('failed to decode json')
+		return City{}
+	}
+	if data.data.cities.len > 0 {
+		return data.data.cities[0]
+	} else {
+		eprintln('no city found with $name name')
+		return City{}
+	}
 }
 
 pub fn (mut explorer Explorer) city_by_id(id u32) ?City {

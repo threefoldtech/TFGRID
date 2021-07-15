@@ -84,6 +84,12 @@ pub fn (mut grid TFGrid) city_by_id(id u32) ?City {
 pub fn (mut grid TFGrid) cities_by_country_id(id u32) ?[]City {
 	return grid.explorer.cities_by_country_id(id)
 }
+pub fn (mut grid TFGrid) nodes_by_country_city(geoLocation GeoLocation) ?[]TFGridNode{
+	return grid.explorer.nodes_by_country_city(geoLocation)
+}
+pub fn (mut grid TFGrid) nodes_by_location(latitude string, longitude string) ?[]TFGridNode {
+	return grid.explorer.nodes_by_location(latitude,longitude)
+}
 
 // TODO: arguments to be added
 pub fn (mut grid TFGrid) node_register() TFGridNode {
