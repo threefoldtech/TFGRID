@@ -36,7 +36,7 @@ struct Body {
 
 pub fn (mut explorer Explorer) entity_list() ?[]TFGridEntity {
 	mut query := GraphqlQuery{
-		query: '{ entities { name, entityId, name, gridVersion, countryId, cityId } }'
+		query: '{ entities { name, entityId, name, gridVersion, countryId, cityId, address } }'
 		operation: 'getAll'
 	}
 
@@ -53,7 +53,7 @@ pub fn (mut explorer Explorer) entity_list() ?[]TFGridEntity {
 
 pub fn (mut explorer Explorer) entity_by_id(id u32) ?TFGridEntity {
 	mut query := GraphqlQuery{
-		query: '{ entities(where: {entityId_eq: $id }) { name, entityId, name, gridVersion, countryId, cityId } }'
+		query: '{ entities(where: {entityId_eq: $id }) { name, entityId, name, gridVersion, countryId, cityId, address } }'
 		operation: 'getOne'
 	}
 
@@ -116,7 +116,7 @@ pub fn (mut explorer Explorer) twin_by_id(id u32) ?TFGridTwin {
 
 pub fn (mut explorer Explorer) nodes_list() ?[]TFGridNode {
 	mut query := GraphqlQuery{
-		query: '{ nodes { gridVersion, nodeId, farmId, sru, cru, hru, mru, location{ latitude, longitude }, pubKey, address, countryId, cityId } }'
+		query: '{ nodes { gridVersion, nodeId, farmId, twinId, countryId, cityId, sru, cru, hru, mru, role, location{ latitude, longitude }, publicConfig { ipv4, ipv6, gw4, gw6 }, address } }'
 		operation: 'getAll'
 	}
 
@@ -133,7 +133,7 @@ pub fn (mut explorer Explorer) nodes_list() ?[]TFGridNode {
 
 pub fn (mut explorer Explorer) node_by_id(id u32) ?TFGridNode {
 	mut query := GraphqlQuery{
-		query: '{ nodes(where: { nodeId_eq: $id }) { gridVersion, nodeId, farmId, sru, cru, hru, mru, location{ latitude, longitude }, pubKey, address, countryId, cityId } }'
+		query: '{ nodes(where: { nodeId_eq: $id }) { gridVersion, nodeId, farmId, twinId, countryId, cityId, sru, cru, hru, mru, role, location{ latitude, longitude }, publicConfig { ipv4, ipv6, gw4, gw6 }, address } }'
 		operation: 'getOne'
 	}
 
@@ -156,7 +156,7 @@ pub fn (mut explorer Explorer) node_by_id(id u32) ?TFGridNode {
 
 pub fn (mut explorer Explorer) nodes_by_resources(sru u32, cru u32, hru u32, mru u32) ?[]TFGridNode {
 	mut query := GraphqlQuery{
-		query: '{ nodes(where: { sru_gt: $sru, cru_gt: $cru, hru_gt: $hru, mru_gt: $mru }) { gridVersion, nodeId, farmId, sru, cru, hru, mru, location{ latitude, longitude }, pubKey, address, countryId, cityId } }'
+		query: '{ nodes(where: { sru_gt: $sru, cru_gt: $cru, hru_gt: $hru, mru_gt: $mru }) { gridVersion, nodeId, farmId, twinId, countryId, cityId, sru, cru, hru, mru, role, location{ latitude, longitude }, publicConfig { ipv4, ipv6, gw4, gw6 }, address } }'
 		operation: 'getAll'
 	}
 
@@ -173,7 +173,7 @@ pub fn (mut explorer Explorer) nodes_by_resources(sru u32, cru u32, hru u32, mru
 
 pub fn (mut explorer Explorer) farms_list() ?[]TFGridFarmer {
 	mut query := GraphqlQuery{
-		query: '{ farms { name, farmId, twinId, gridVersion, countryId, cityId, pricingPolicyId } }'
+		query: '{ farms { gridVersion, farmId, twinId, name, countryId, cityId, pricingPolicyId, certificationType } }'
 		operation: 'getAll'
 	}
 
@@ -190,7 +190,7 @@ pub fn (mut explorer Explorer) farms_list() ?[]TFGridFarmer {
 
 pub fn (mut explorer Explorer) farm_by_id(id u32) ?TFGridFarmer {
 	mut query := GraphqlQuery{
-		query: '{ farms(where: { farmId_eq: $id }) { name, farmId, twinId, gridVersion, countryId, cityId, pricingPolicyId } }'
+		query: '{ farms(where: { farmId_eq: $id }) { gridVersion, farmId, twinId, name, countryId, cityId, pricingPolicyId, certificationType } }'
 		operation: 'getOne'
 	}
 

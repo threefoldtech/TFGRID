@@ -1,7 +1,9 @@
+// todo OEM only later
+
 module zosreq
 
 // ONLY possible on SSD
-pub struct ReqVolume {
+pub struct ReqZDisk {
 pub mut:
 	// name unique per deployment, re-used in request & response
 	name string
