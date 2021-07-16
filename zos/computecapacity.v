@@ -8,7 +8,7 @@ pub mut:
 	cpu u8
 	// memory in bytes, minimal 100 MB
 	// always reserved
-	memory u64
+	memory i64
 	// min disk size reserved (to make sure you have growth potential)
 	// when reserved it means you payment
 	// if you use more, you pay for it

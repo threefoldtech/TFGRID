@@ -90,7 +90,9 @@ pub fn (mut deployment Deployment) challenge() string {
 	for mut workload in deployment.workloads {
 		out << workload.challenge()
 	}
-	return out.join('')
+	out << deployment.signature_requirement.challenge()
+	ret := out.join('')
+	return ret
 }
 
 // ChallengeHash computes the hash of the challenge signed

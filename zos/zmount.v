@@ -6,7 +6,7 @@ module zos
 // ONLY possible on SSD
 pub struct Zmount {
 pub mut:
-	size u64 // bytes
+	size i64 // bytes
 }
 
 pub fn (mut mount Zmount) challenge() string {

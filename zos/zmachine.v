@@ -3,7 +3,7 @@ module zos
 pub struct Zmachine {
 pub mut:
 	flist             string // if full url means custom flist meant for containers, if just name should be an official vm
-	network 		  ZMachineNetwork
+	network 		  ZmachineNetwork
 	size              u8
 	compute_capacity  ComputeCapacity
 	mounts  		 []Mount
@@ -11,7 +11,7 @@ pub mut:
 	env         	  map[string]string //environment for the zmachine
 }
 
-pub struct ZMachineNetwork{
+pub struct ZmachineNetwork{
 pub mut:
 	public_ip		 string
 	interfaces       []ZNetworkInterface
@@ -24,7 +24,7 @@ pub mut:
 	ip               string
 }
 
-pub fn (mut n ZMachineNetwork) challenge() string {
+pub fn (mut n ZmachineNetwork) challenge() string {
 	mut out := ""
 	out += n.public_ip
 	out += n.planetary.str()

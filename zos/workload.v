@@ -14,11 +14,15 @@ pub const workload_types = WorkloadTypes{}
 
 type WorkloadType = string
 
-pub enum ResultState {
-	error
-	ok
-	deleted
+pub struct ResultStates {
+pub:
+	error ResultState = "error"
+	ok ResultState = "ok"
+	deleted ResultState = "deleted"
 }
+
+pub const result_states = ResultStates{}
+type ResultState = string
 
 pub fn challenge(data string, type_ string) ?string {
 	match type_ {
@@ -27,10 +31,16 @@ pub fn challenge(data string, type_ string) ?string {
 			return w.challenge()
 		}
 
+		workload_types.network {
+			mut w := json.decode(Znet, data)?
+			return w.challenge()
+		}
+
 		workload_types.zdb {
 			mut w := json.decode(Zdb, data)?
 			return w.challenge()
 		} 
+
 		workload_types.zmachine {
 			mut w := json.decode(Zmachine, data)?
 			return w.challenge()
@@ -92,7 +102,7 @@ pub mut:
 	// not implemented in zos
 	// acl []ACE
 
-	result string [raw]
+	result   DeploymentResult 
 }
 
 
