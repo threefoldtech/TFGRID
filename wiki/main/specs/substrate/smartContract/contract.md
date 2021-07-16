@@ -11,7 +11,7 @@ Two main components will play a role in achieving a decentralised consensus betw
 The TFGrid Substrate Database will keep a record of all users, twins, nodes and farmers in the TF Grid network. This makes it easy to integrate the Smart Contract on Substrate as well since we can read from that storage in Runtime.
 
 check flow diagram: [flow](flow.png)
-![flow](flow.png)
+![flow](img/flow.png)
 
 The Smart Contract on Substrate will work as following:
 
