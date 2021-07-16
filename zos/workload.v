@@ -30,6 +30,10 @@ pub fn challenge(data string, type_ string) ?string {
 		workload_types.zdb {
 			mut w := json.decode(Zdb, data)?
 			return w.challenge()
+		} 
+		workload_types.zmachine {
+			mut w := json.decode(Zmachine, data)?
+			return w.challenge()
 		}
 
 		// workload_types.zmount {
@@ -106,8 +110,8 @@ pub fn (mut workload Workload) challenge() string{
 	return out.join('')
 }
 
-type WorkloadData = Zmount | Zdb
-type WorkloadDataResult = ZmountResult | ZdbResult
+type WorkloadData = Zmount | Zdb | Zmachine | Znet
+type WorkloadDataResult = ZmountResult | ZdbResult | ZmachineResult
 
 // pub fn(mut w WorkloadData) challenge() string {
 // 	return w.challenge()

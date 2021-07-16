@@ -12,7 +12,7 @@ fn main() {
 	}
 
 	mut workload := zos.Workload{
-		version: 3,
+		version: 0,
 		name: "zmountiaia",
 		type_: zos.workload_types.zmount,
 		data: json.encode(zmount),
@@ -21,8 +21,8 @@ fn main() {
 	}
 
 	mut deployment := zos.Deployment{
-		version: 3,
-		twin_id: 17,
+		version: 0,
+		twin_id: 14,
 		expiration:  1626394539,//time.now().unix_time() + 11111,
 		metadata: "zm dep",
 		description: "zm test",
