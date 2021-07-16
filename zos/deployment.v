@@ -95,13 +95,17 @@ pub fn (mut deployment Deployment) challenge() string {
 
 // ChallengeHash computes the hash of the challenge signed
 // by the user. used for validation
-pub fn(mut deployment Deployment) challenge_hash() string {
-	return md5.hexhash(deployment.challenge())
+pub fn(mut deployment Deployment) challenge_hash() []byte {
+	return md5.sum(deployment.challenge().bytes())
 }
 
 pub fn(mut deployment Deployment) sign(twin u32, signing_key libsodium.SigningKey) {
 	message := deployment.challenge_hash()
-	signature := signing_key.sign(message.bytes()).hex()
+	// signature returned contains original message (signature+message)
+	mut signature_bytes := signing_key.sign(message)
+	// zos expects only signature (and it will construct the message itself)
+	signature_bytes.trim(signature_bytes.len - message.len)
+	signature := signature_bytes.hex()
 
 	for mut sig in deployment.signature_requirement.signatures {
 		if sig.twin_id == twin {

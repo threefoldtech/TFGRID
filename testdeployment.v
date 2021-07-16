@@ -30,18 +30,22 @@ fn main() {
 	}
 
 
+	challenge := deployment.challenge()
 	hash := deployment.challenge_hash()
-	deployment.contract_id = 15
+	hex_hash := hash.hex()
+	deployment.contract_id = 14
 
 	mut secret := [byte(171), 101, 228, 213, 178, 56, 187, 250, 175, 19, 223, 79, 12, 92, 149, 56, 221, 186, 188, 41, 119, 82, 88, 84, 191, 11, 119, 28, 6, 131, 8, 40]!
 	mut pubkey := [byte(57), 54, 233, 10, 99, 57, 243, 21, 198, 161, 135, 30, 247, 196, 32, 60, 11, 117, 172, 13, 183, 237, 253, 67, 222, 118, 37, 238, 241, 161, 194, 223]!
 	key := libsodium.new_signing_key(pubkey, secret)
 
-	println("deployment hash: $hash")
+	println('deployment challenge: "$challenge"')
+	println("deployment hash: $hex_hash")
 	deployment.sign(17, key)
 	payload := json.encode(deployment)
-	print("payload: $payload")
-	
+	println("payload: $payload")
+
+	// do msgbus call
 	mut mb :=  client.MessageBusClient{
 		client: redisclient.connect('localhost:6379') or { panic(err) }
 	}
@@ -63,5 +67,4 @@ fn main() {
 		println(result)
 		println(result.data)
 	}
-
 }
