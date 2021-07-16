@@ -110,7 +110,7 @@ pub fn (mut workload Workload) challenge() string{
 	return out.join('')
 }
 
-type WorkloadData = Zmount | Zdb | Zmachine | ZNet
+type WorkloadData = Zmount | Zdb | Zmachine | Znet
 type WorkloadDataResult = ZmountResult | ZdbResult | ZmachineResult
 
 // pub fn(mut w WorkloadData) challenge() string {
