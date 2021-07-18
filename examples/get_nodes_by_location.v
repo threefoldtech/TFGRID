@@ -8,7 +8,6 @@ fn get_nodes_by_location(latitude string,longitude string) ? {
 fn main(){
 	mut latitude:=""
 	mut longitude:=""
-	println(os.args)
 	if "--help" in os.args {
 		println("This method to get nodes by location including latitude and longitude \n
 		--latitude value (required) \n
