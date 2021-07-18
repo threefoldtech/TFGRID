@@ -154,7 +154,7 @@ pub fn (mut explorer Explorer) node_by_id(id u32) ?TFGridNode {
 	}
 }
 
-pub fn (mut explorer Explorer) nodes_by_resources(sru u32, cru u32, hru u32, mru u32) ?[]TFGridNode {
+pub fn (mut explorer Explorer) nodes_by_resources(sru u64, cru u64, hru u64, mru u64) ?[]TFGridNode {
 	mut query := GraphqlQuery{
 		query: '{ nodes(where: { sru_gt: $sru, cru_gt: $cru, hru_gt: $hru, mru_gt: $mru }) { gridVersion, nodeId, farmId, twinId, countryId, cityId, sru, cru, hru, mru, role, location{ latitude, longitude }, publicConfig { ipv4, ipv6, gw4, gw6 }, address } }'
 		operation: 'getAll'
