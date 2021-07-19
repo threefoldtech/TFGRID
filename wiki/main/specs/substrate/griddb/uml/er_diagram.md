@@ -48,7 +48,11 @@ erDiagram
         role role
         string address
         string role
-        string location
+        int country_id
+        int city_id
+        publicConfig publicConfig
+        location location
+        resource resources
     }
     PricingPolicy {
         string name
