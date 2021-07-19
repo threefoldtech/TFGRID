@@ -9,11 +9,11 @@ Following identities are stored on Substrate:
 - Farmers (Threefold grid Farmers).
 - Node (Threefold grid physical Nodes).
 
-[Entity Relationship Diagram](https://github.com/threefoldtech/substrate-pallets/blob/master/pallet-tfgrid/diagram.md)
+[Entity Relationship Diagram](./er_diagram.md)
 
 ## Entities
 
-Entities are links to physical human beings. Only one entity object per human can or must be created in the database. An person will register himself on substrate with the Threefold Connect application.
+Entities are links to physical human beings. Only one entity object per human can or must be created in the database. A person will register himself on substrate through the Threefold Connect application.
 
 ## Twins
 
@@ -23,15 +23,23 @@ Twins are digital copies of humain beings that control:
 - Farms
 - Digital twins (assitants)
 
+Twins must set an IP field, this field can either be ipv4/ipv6. Be setting this value, Twins can talk to eachother over a message bus (RMB).
+
 A twin is an anonymous entity in substrate, if a twin wishes to make himself a known enitity he can link up with an Entity (see above).
 
 ## Farmers
 
-Farmers are digital twins (twins) that control a physical Node's Farm. A farmer can have multiple nodes and can set it's prices by linking to a Pricing Policy. (TODO define pricing policies). A farmer can also provide public ips to his consumers.
+Farmers are digital twins (Twin object) that control a physical Node's Farm. Before one can construct a Farm object, a Twin must be created. With this Twin's keypair a Farm should be created, this way a Twin and a Farm will be linked to eachother.
+
+A farmer can have multiple nodes and can set it's prices by linking to a Pricing Policy. (TODO define pricing policies). A farmer can also provide a list of public ips so that consumers can rent an IP from that list.
 
 ## Nodes
 
-Nodes are digital twins (twins) that control a physical Node. A node is always linked to a Farm (see above). A Node can accept workloads and bill the consumer's wallet accordingly.
+Nodes are digital twins (Twin object) that control a physical Node. A node is always linked to a Farm (see above). Before a Node object can be registered, a Twin object must be created. With this Twin's keypair a Node should be registered, this way Twin and a Node will be linked to eachother.
+
+On Node creation, a Farm ID must be specified. This Farm ID is passed as a kernel argument on the boot process. When a Farm ID is set, only that farm can manage this Node.
+
+A Node can accept workloads and bill the consumer's wallet accordingly.
 
 ## Creating / updating / deleting objects
 
