@@ -52,6 +52,11 @@ json
         cityId,
         pricingPolicyId,
         certificationType
+        publicIPs{
+            ip,
+            gateway,
+            contractId
+        }
     }
 }
 ```

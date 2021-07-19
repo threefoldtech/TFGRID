@@ -1,6 +1,5 @@
 ```mermaid
 erDiagram
-    Entity ||--o{ Twin : optionaly_has_multiple
     Entity {
         int version
         int id
@@ -9,8 +8,8 @@ erDiagram
         int city_id
         string address
     }
-    Twin ||--|{ Farm : can_be_a
-    Twin ||--|{ Node : can_be_a
+    Entity ||--|| Ed25519Keypair : "has a"
+    Entity ||--|{ Proof : provides
     Twin {
         int version
         int id
@@ -18,14 +17,19 @@ erDiagram
         string ip
         list EntityProofs
     }
-    Twin ||--|{ Proof : can_have_multiple
-    Entity ||--|{ Proof : can_have_multiple
+    Farm ||--|| Twin : "has a"
+    Node ||--|| Twin : "has a"
+    Twin ||--|| Ed25519Keypair : "has a"
+    Twin ||--|{ Proof : "can have multiple"
+    Ed25519Keypair {
+        string privateKey
+        string publicKey
+    }
     Proof {
         int entityID
         int twinID
         string signature
     }
-    Node ||--|{ Farm : linked_to
     Farm {
         int version
         int id
@@ -35,7 +39,7 @@ erDiagram
         string certificationType
         string location
     }
-    Farm ||--|{ PricingPolicy : can_have
+    Farm }|--|| PricingPolicy : "has a"
     Node {
         int version
         int id
@@ -53,4 +57,5 @@ erDiagram
         int nu
         int ipv4u
     }
+    Node ||--|| Farm : "linked to"
 ```

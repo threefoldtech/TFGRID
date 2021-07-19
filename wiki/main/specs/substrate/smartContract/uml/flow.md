@@ -7,7 +7,6 @@ sequenceDiagram
     Chain->>Twin: Sends contract id
     Twin->>Node: Send contract ID and workload data over RMB
     Node->>Chain: Checks contract
-    Node->>Chain: Set contract deployed
     loop
     Node->>Chain: Send consumption reports
     Chain->>Twin: Bill twin based on consumption

@@ -11,7 +11,7 @@ Following identities are stored on Substrate:
 
 A Twin object is digital representation of either a User, Node or a Farm. It facilitates a way to communicate against the chain.
 
-[Entity Relationship Diagram](./er_diagram.md)
+[Entity Relationship Diagram](./uml/er_diagram.md)
 
 ## Prelude
 
@@ -224,3 +224,9 @@ We store every creation / update / deletion of above objects in a graphql databa
 ## Note
 
 Full type definition can be found [here](https://github.com/threefoldtech/vgrid/blob/main/tfgriddb/tfgriddb_model.v)
+
+## Diagram
+
+In this Diagram we can see that a Node and a Farm have a Twin object. An Entity can link to a Twin given that there is a proof that this Entity agreed on that link.
+
+[Entity Relationship Diagram](./img/er_diagram.md)
