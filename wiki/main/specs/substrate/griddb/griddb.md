@@ -229,4 +229,4 @@ Full type definition can be found [here](https://github.com/threefoldtech/vgrid/
 
 In this Diagram we can see that a Node and a Farm have a Twin object. An Entity can link to a Twin given that there is a proof that this Entity agreed on that link.
 
-[Entity Relationship Diagram](./img/er_diagram.md)
+[Entity Relationship Diagram](./img/er_diagram.png)
