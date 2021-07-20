@@ -49,9 +49,9 @@ If `public_ips` is specified, the contract will reserve the number of public ips
 
 This pallet saves this data to storage and returns the user a `contract_id`.
 
-## 2: The user sends the contractID through the RMB to the destination Node.
+## 2: The user sends the contractID and workload through the RMB to the destination Node.
 
-The Node reads from the [RMB](https://github.com/threefoldtech/rmb) and sees a deploy command, it reads the contractID and fetches that Contract from this pallet's storage. It decodes the workload and does validation before it deploys the contents. If successfull it sets the Contract to state `deployed` on the chain. Else the contract is removed.
+The Node reads from the [RMB](https://github.com/threefoldtech/rmb) and sees a deploy command, it reads the contractID and workload definition. It decodes the workload and does validation before it deploys the contents. If successfull it sets the Contract to state `deployed` on the chain. Else the contract is removed.
 
 ## 3: The Node sends consumption reports to the chain
 
