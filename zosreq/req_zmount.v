@@ -1,17 +1,21 @@
 // ssd mounts under zmachine
 
 
-module zosreq
+module zosreq1
 
 // ONLY possible on SSD
 pub struct ReqZmount {
 pub mut:
-	// name unique per deployment, re-used in request & response
-	name string
-	// size in MB
-	// is permanent diskspace as	
-	size u32 //mb	
-
+	size u64 // bytes
 }
 
+pub fn (mut zmunt ResZmount) challange() string {
+	out := []string{}
+	out << zmunt.size
+	return out.join("")
+}
 
+pub struct ResZmount {
+pub mut:
+	volume_id string
+}

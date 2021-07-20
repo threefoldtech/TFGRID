@@ -2,13 +2,9 @@ module zosreq
 
 pub struct ReqZDB {
 pub mut:
-	// name unique per deployment, re-used in request & response
-	name string
-	// name to be used for namespaces
-	// in ZDB itself it will be $deploymentid_$name
 	namespace string
-	// size in MB
-	size   u32
+	// size in bytes
+	size   u64
 	mode      ZDBMode
 	password  string
 	disk_type DiskType

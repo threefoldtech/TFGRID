@@ -1,9 +1,9 @@
-module zosreq
+module zos
 
 
 // wg network reservation (znet)
 
-pub struct ReqZnet {
+pub struct Znet {
 pub mut:
 	// unique nr for each network chosen, this identified private networks as connected to a container or vm or ...
 	// corresponds to the 2nd number of a class B ipv4 address
@@ -17,11 +17,25 @@ pub mut:
 	wireguard_private_key string
 	//>1024?
 	wireguard_listen_port u16
-	peers                 []ReqPeerNetwork
+	peers                 []Peer
+}
+pub fn (mut n Znet) challenge() string {
+	mut out := ""
+	out += n.ip_range
+	out += n.subnet
+	out += n.wireguard_private_key
+	out += n.wireguard_listen_port.str()
+	for mut p in n.peers {
+		out += p.challenge()
+	}
+
+
+	return out
+
 }
 
 // is a remote wireguard client which can connect to this node
-pub struct ReqPeerNetwork {
+pub struct Peer {
 pub mut:
 	// is another class C in same class B as above
 	subnet string
@@ -35,3 +49,16 @@ pub mut:
 
 // TODO: need API endpoint on ZOS to find open ports
 // TODO: reservation for 1 h, after will be released again
+
+pub fn (mut p Peer) challenge() string {
+	mut out := ""
+	out += p.wireguard_public_key
+	out += p.endpoint
+	out += p.subnet
+
+	for ip in p.allowed_ips {
+		out += ip
+
+	}
+	return out 
+}

@@ -34,12 +34,12 @@ pub struct ComputeCapacity {
 pub mut:
 	// cpu cores, minimal 10 cpu_centi_core
 	// always reserved with overprovisioning of about 1/4-1/6
-	cpu_centi_core u32
-	// memory in MB, minimal 100 MB
+	cpu u8
+	// memory in bytes, minimal 100 MB
 	// always reserved
-	memory_mb u16
+	memory u64
 	// min disk size reserved (to make sure you have growth potential)
 	// when reserved it means you payment
 	// if you use more, you pay for it
-	ssd_size_mb u64
+
 }
