@@ -11,7 +11,7 @@ Following identities are stored on Substrate:
 
 A Twin object is digital representation of either a User, Node or a Farm. It facilitates a way to communicate against the chain.
 
-[Entity Relationship Diagram](./uml/er_diagram.md)
+[Entity Relationship Diagram](er_diagram)
 
 ## Prelude
 
@@ -219,7 +219,7 @@ https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fexplorer.devnet.grid.tf%2Fws#/extr
 
 We store every creation / update / deletion of above objects in a graphql database. An end user of any other application can query the objects from the substrate database without having to talk to the substrate nodes. 
 
-[example](./graphql.md)
+[example](graphql)
 
 ## Note
 
