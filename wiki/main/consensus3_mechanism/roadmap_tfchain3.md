@@ -5,9 +5,9 @@
 
 ## Phase 1: proof of authority blockchain
 
-Proof of authority blockchain run by group of 9 TFGuardians.
+<!-- Proof of authority blockchain run by group of 9 TFGuardians. -->
 
-Each Guardian is independent and has all best intentions for TF in mind.
+<!-- Each Guardian is independent and has all best intentions for TF in mind. -->
 
 This is implemented using parity/substrate.
 
@@ -25,7 +25,7 @@ Con
 
 - [ ] some people believe this might be less decentralized compared to delegated proof of stake blockchain
 
-Future we could at any point in time decide to run more nodes e.g. 99 or so, there is no limit to this.
+<!-- Future we could at any point in time decide to run more nodes e.g. 99 or so, there is no limit to this. -->
 
 ## Phase 2: Delegate Proof of Authority/Stake Blockchain
 
@@ -41,6 +41,6 @@ Pro
 Con
 
 - [ ] harder to provide a solution to disasters (acts of god).
-- [ ] upgrades happen by the people who provide the nodes, which means that actually we could argue that maybe this is not more decentralized compared to Phase 2. Ofcourse people could redraw their delegated stake but who actually is checking on this.
+<!-- - [ ] upgrades happen by the people who provide the nodes, which means that actually we could argue that maybe this is not more decentralized compared to Phase 2. Ofcourse people could redraw their delegated stake but who actually is checking on this. -->
 
 !!!include:consensus3_toc

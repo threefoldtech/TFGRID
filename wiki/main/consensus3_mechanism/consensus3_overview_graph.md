@@ -46,8 +46,3 @@ graph TB
 ```
 
 *click on the parts of the image, they will go to more info*
-
-
-Hi Guys,
-
-Since this weekend 

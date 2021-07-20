@@ -17,7 +17,7 @@
 
 ### remarks
 
-- there are 9 TFGridBCNode = each node is operated by a TFGuardian
+<!-- - there are 9 TFGridBCNode = each node is operated by a TFGuardian -->
 - Each Monitor_Engine checks uptime of X nr of nodes (in beginning it can do all nodes), and stores the info in local DB (to keep history of check)
 - [Roadmap for TFChain deployment mechanism](roadmap_tfchain3)
 
