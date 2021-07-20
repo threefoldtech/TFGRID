@@ -5,7 +5,6 @@
 Two main components will play a role in achieving a decentralised consensus between a user and a farmer.
 
 1: TFGrid Substrate Database Pallet TFGrid
-
 2: TFGrid Smart Contract
 
 The TFGrid Substrate Database will keep a record of all Entities, Twins, Nodez and Farmers in the TF Grid network. This makes it easy to integrate the Smart Contract on Substrate as well since we can read from that storage in Runtime.
@@ -51,7 +50,8 @@ This pallet saves this data to storage and returns the user a `contract_id`.
 
 ## 2: The user sends the contractID and workload through the RMB to the destination Node.
 
-The Node reads from the [RMB](https://github.com/threefoldtech/rmb) and sees a deploy command, it reads the contractID and workload definition. It decodes the workload and does validation before it deploys the contents. If successfull it sets the Contract to state `deployed` on the chain. Else the contract is removed.
+The Node reads from the [RMB](https://github.com/threefoldtech/rmb) and sees a deploy command, it reads the contractID and workload definition from the payload. 
+It decodes the workload and reads the contract from chain using the contract ID, 
 
 ## 3: The Node sends consumption reports to the chain
 
@@ -82,4 +82,5 @@ The main currency of this chain. More information on this is explained here: TOD
 
 ## Footnote
 
-Sending the workloads encrypted to the chain makes sure that nobody except the destination Node can read the deployment's information as this can contain sensitive data. This way we also don't need to convert all the Zero OS primitive types to a Rust implementation and we can keep it relatively simple.
+Sending the workloads encrypted to the chain makes sure that nobody except the user can read his deployment data, this also facilitates a way for the user to recreate his workload data from the chain. 
+This way we also don't need to convert all the Zero OS primitive types to a Rust implementation and we can keep it relatively simple.
