@@ -10,7 +10,7 @@
 - the private key for the user is given to zoscmd or in predefined directory e.g. ~/.zoscmd/...
 
 
-## TODO
+## todo's
 
 - [ ] good definition of each primitive workload def
     - [ ] schema def in vlang (its a good spec format)
@@ -18,7 +18,6 @@
 - [ ] examples in json & yaml (some pre-made directories)
 - [ ] explain how feedback is given
 - [ ] make sure tfgridDB is also documented
-
 
 ## Link to VLANG
 

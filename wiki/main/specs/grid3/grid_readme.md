@@ -3,7 +3,7 @@ This document is about tf-grid 3.0. It shows an overview of the grid regarding o
 ## Definitions
 - 3node: a machine that runs zos operating system.
 - RMB: reliable message bus
-- grid-db: a decentralized block chain database that allows nodes and other twins to share trusted data. Anyone can look up nodes and verify their identity, find their corresponding twin IDs to communicate over RMB.
+- grid_db: a decentralized block chain database that allows nodes and other twins to share trusted data. Anyone can look up nodes and verify their identity, find their corresponding twin IDs to communicate over RMB.
 
 # Overview
 ![Overlay](img/grid3_overlay.png)

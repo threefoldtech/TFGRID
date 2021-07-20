@@ -41,7 +41,6 @@ fn (mut key MyTwinPrivateKey) load(path string) ? {
 	}
 }
 
-// TODO: do we need to do this here? maybe we should use digital twin proxy (is the nodejs)
 
 // could be its not strings we need to return but bytestrings? TODO:
 fn (mut key MyTwinPrivateKey) sign(payload string) ?string {

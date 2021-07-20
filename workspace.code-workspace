@@ -4,13 +4,16 @@
 			"path": "../publishtools"
 		},
 		{
-			"path": "."
-		},
-		{
-			"path": "../../home/gitpod/codewiki"
-		},
-		{
 			"path": "../crystallib"
+		},
+		{
+			"path": "../../home/gitpod/codewiki/internet4"
+		},
+		{
+			"path": "../../home/gitpod/codewiki/wiki"
+		},
+		{
+			"path": "tfgriddb"
 		}
 	],
 	"settings": {}

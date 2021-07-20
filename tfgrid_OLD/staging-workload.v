@@ -137,7 +137,7 @@ pub fn (member &Member) challenge() string {
 		c += '$ip'
 	}
 	c += '$member.public_ip6'
-	// TODO: enable this after https://github.com/threefoldtech/zos/issues/868 is done
+	// TOD enable this after https://github.com/threefoldtech/zos/issues/868 is done
 	// c += '${member.yggdrasil_ip}'
 	return c
 }
@@ -307,7 +307,7 @@ pub fn (w &Workload) challenge() string {
 	out += '$w.workload_type'
 	out += '$w.metadata'
 	out += '$w.description'
-	// TODO: proper err handling (pass up?)
+	// TOD: proper err handling (pass up?)
 	data := w.workload_data() or { panic('Failed to get workload data: ' + err) }
 	out += data.challenge()
 

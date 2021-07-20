@@ -1,3 +1,12 @@
+
+## TF GridDB Schema
+
+- [Entity](griddb_entity)
+- [Twin](griddb_twin)
+- [Farm](griddb_farm)
+- [Node](griddb_node)
+- [PricingPolicy](griddb_pricingpolicy)
+
 ```mermaid
 erDiagram
     Entity {
@@ -8,7 +17,6 @@ erDiagram
         int city_id
         string address
     }
-    Entity ||--|| Ed25519Keypair : "has a"
     Entity ||--|{ Proof : provides
     Twin {
         int version
@@ -19,12 +27,7 @@ erDiagram
     }
     Farm ||--|| Twin : "has a"
     Node ||--|| Twin : "has a"
-    Twin ||--|| Ed25519Keypair : "has a"
     Twin ||--|{ Proof : "can have multiple"
-    Ed25519Keypair {
-        string privateKey
-        string publicKey
-    }
     Proof {
         int entityID
         int twinID
@@ -62,4 +65,8 @@ erDiagram
         int ipv4u
     }
     Node ||--|| Farm : "linked to"
+
 ```
+
+!!!def alias:tfgrid_db_schema,grid_db_schema
+
