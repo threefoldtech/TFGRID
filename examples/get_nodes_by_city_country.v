@@ -9,7 +9,6 @@ fn main(){
 	mut geo_location := tfgriddb.GeoLocation{}
 	mut city_name := ""
 	mut country_name := ""
-	println(os.args)
 	if "--help" in os.args {
 		println("This method to get nodes by city or country or both \n
 		--city 		name of the city  (optional) \n

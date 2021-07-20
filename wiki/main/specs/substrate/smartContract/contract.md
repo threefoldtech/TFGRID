@@ -8,7 +8,7 @@ Two main components will play a role in achieving a decentralised consensus betw
 
 2: TFGrid Smart Contract
 
-The TFGrid Substrate Database will keep a record of all users, twins, nodes and farmers in the TF Grid network. This makes it easy to integrate the Smart Contract on Substrate as well since we can read from that storage in Runtime.
+The TFGrid Substrate Database will keep a record of all Entities, Twins, Nodez and Farmers in the TF Grid network. This makes it easy to integrate the Smart Contract on Substrate as well since we can read from that storage in Runtime.
 
 check flow diagram: [flow](flow.png)
 ![flow](img/flow.png)
@@ -17,16 +17,16 @@ The Smart Contract on Substrate will work as following:
 
 ## 1: The user wants to deploy a workload, he interacts with this smart contract pallet and calls: `create_contract` with the input being:
 
-The user must instruct his twin to create the contract. A contract will always belong to a twin and to a node. This relationship is important because only the user's twin can update the contract as well as only the target node can update as well.
+The user must instruct his twin to create the contract. *This program containing his digital twin is yet to be defined.* A contract will always belong to a twin and to a node. This relationship is important because only the user's twin and target node's twin can update the contract.
 
-json
-```
+
+```js
 contract = {
     version: contractVersion,
     contract_id: contractID,
-    twin_id: twinID for the contract,
-    // node_id is the node address.
-    node_id: "<node address>"
+    twin_id: NumericTwinID for the contract,
+    // node_address is the node address.
+    node_address: "<node address>"
     // data is the encrypted deployment body. This encrypted the deployment with the **USER** public key. So only the user can read this data later on (or any other key that he keeps safe).
     // this data part is read only by the user and can actually hold any information to help him reconstruct his deployment or can be left empty.
     data: encrypted(deployment) // optional
@@ -41,7 +41,7 @@ contract = {
     public_ips_list: list of public ips on this contract
 }
 ```
-The `node_id` field is the target node's ss58 address. A user can do lookup for a node to find it's corresponding address.
+The `node_address` field is the target node's address. A user can do lookup for a node to find it's corresponding address.
 
 The workload data is encrypted by the user and contains the workload definition for the node.
 
