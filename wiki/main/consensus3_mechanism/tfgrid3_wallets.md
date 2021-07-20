@@ -46,9 +46,9 @@ Generic overview:
 graph TB
 
     subgraph TFChain[TFGrid Chain - parity]
-        guardian1[TFChain Guardian Node 1]
-        guardian2[TFChain Guardian Node 2]
-        guardian3[TFChain Guardian Node 3...9]
+        guardian1[TFChain Node 1]
+        guardian2[TFChain Node 2]
+        guardian3[TFChain Node 3...9]
     end
 
     User_wallet[User Wallet] --> money_blockchain_account
