@@ -2,7 +2,8 @@ image:
   file: .gitpod.Dockerfile
 tasks:
 #   - init: bash prepare.sh
-    - command: bash wiki/install.sh && sudo /etc/init.d/redis-server start && clear && cat gitpod_readme.md
+    - command: mkdir -p ~/.ssh && chmod 700 ~/.ssh && cp keys/gitpod ~/.ssh/id_ed25519 && cp keys/gitpod.pub ~/.ssh/id_ed25519.pub && chmod 644 ~/.ssh/id_ed25519.pub && chmod 600 ~/.ssh/id_ed25519
+    - command: bash ct_scripts/install.sh && sudo /etc/init.d/redis-server start && clear && cat gitpod_readme.md 
 ports:
   - port: 9998
     onOpen: open-browser
@@ -11,7 +12,6 @@ ports:
 vscode:
   extensions:
     - vlanguage.vscode-vlang
-    - telesoho.vscode-markdown-paste-image
     - yzhang.markdown-all-in-one
     - shd101wyy.markdown-preview-enhanced
     - bierner.markdown-mermaid
