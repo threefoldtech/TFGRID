@@ -4,14 +4,15 @@ FROM gitpod/workspace-full:latest
 USER root
 RUN apt-get update && apt-get install -y redis-server mc
 
+#install node & rmb 
+ADD ct_scripts/install_v_rmb.sh /tmp/install_v_rmb.sh
+RUN sudo bash /tmp/install_v_rmb.sh
+
 #prepare for gitpod nodejs env
 ADD ct_scripts/install_node.sh /tmp/install_node.sh
 RUN sudo bash /tmp/install_node.sh
 
 
-#install node & rmb 
-ADD ct_scripts/install_v_rmb.sh /tmp/install_v_rmb.sh
-RUN sudo bash /tmp/install_v_rmb.sh
 
 
 # install tfgrid-substrate
