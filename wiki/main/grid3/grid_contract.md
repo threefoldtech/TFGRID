@@ -1,5 +1,7 @@
 # Deployment contract
 
+> TODO: kristof to improve
+
 The deployment contract is a contract between:
 - User (owner of deployment)
 - Node (Zos node)

@@ -1,5 +1,4 @@
 
-- [Architecture](architecture.md)
 - [tfgrid_substrate](substrate_readme)
   - [griddb obj](griddb)
   - [grid db dev env](grid_substrate_develop)
@@ -10,6 +9,7 @@
 - [zos specs](zos_specs)
 - [grid overview](grid_readme)
 - [enduser api](z_api)
+- [Architecture](architecture)
 
 
 <!-- - [Why do we exist?](funding:why) -->
