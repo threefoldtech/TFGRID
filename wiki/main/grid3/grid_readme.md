@@ -1,11 +1,18 @@
 # Introduction
+
+> TODO: this doc needs to be broken appart in different parts
+
+
 This document is about tf-grid 3.0. It shows an overview of the grid regarding operation, and how different components communicate to each other.
+
 ## Definitions
+
 - 3node: a machine that runs zos operating system.
 - RMB: reliable message bus
 - grid_db: a decentralized block chain database that allows nodes and other twins to share trusted data. Anyone can look up nodes and verify their identity, find their corresponding twin IDs to communicate over RMB.
 
 # Overview
+
 ![Overlay](img/grid3_overlay.png)
 
 The operation can be described as follows:
@@ -27,6 +34,7 @@ The operation can be described as follows:
   - Node will also send consumption reports to the contract, the contract then can start billing the user.
 
 ![Sequence Diagram](img/sequence.png)
+
 # 3node
 On first boot the node needs to create a “twin” on the grid, a twin associated with a public key. Hence it can create verifiable signed messages.
 Then, a node will then register itself as a “node” on the grid, and links this twin to the node object.

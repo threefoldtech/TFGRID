@@ -1,11 +1,11 @@
 
-An agent works on behalf of user and talks to the TFChain and to the different 3Nodes.
+An grid_agent works on behalf of user and talks to the TFChain and to the different 3Nodes.
 
 ```mermaid
 graph TD
 
     subgraph PCUSER[Computer from TFGrid user]
-    agent --- webinterface[rest webinterface]
+    agent[Grid Agent] --- webinterface[rest webinterface]
     agent --- cmdline[cmdline + json data]
     Terraform --> agent
     end    
@@ -18,9 +18,9 @@ graph TD
 ```
 
 
-TFGrid agent is the connection point for the developer.
+grid_agent is the connection point for the developer.
 
-Functions of the TFGrid Agent
+Functions of the grid_agent
 
 - blockchain client to TFChain
 - wallet using TFChain TFT
@@ -30,12 +30,13 @@ Functions of the TFGrid Agent
 - type checking for strongly typed structs as needed on TFGrid
 - terraform plugin
   
+> implemented as part of twin_server
 
 ```mermaid
 graph TD
 
     subgraph PCUSER[Computer from TFGrid user]
-    agent
+    agent[Grid Agent]
     end    
 
     agent --- explorer((TFCHAIN))

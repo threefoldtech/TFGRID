@@ -1,13 +1,15 @@
-# ZOSCMD
+# TFGrid CMD
 
-- zoscmd = command line which can process dir with workload defs inside (rust)
+> OUTDATED
+
+- tfgrid_cmd = command line which can process dir with workload defs inside
 - each workload def is a json or yaml file which describes one of the X primitives
 - all primitives in [tfgrid_primitives](internet4:tfgrid_primitives) need to be supported
-- zoscmd will talk to TFGRIDDB and RMB to bring primitives alive
+- tfgrid_cmd will talk to TFGRIDDB and RMB to bring primitives alive
 - do logging in a text file in the dir
 - the workload defs can be modified to have the feedback inside
-- signing & coordination with multiple 3Nodes and TFGridDB happens by zoscmd
-- the private key for the user is given to zoscmd or in predefined directory e.g. ~/.zoscmd/...
+- signing & coordination with multiple 3Nodes and TFGridDB happens by tfgrid_cmd
+- the private key for the user is given to tfgrid_cmd or in predefined directory e.g. ~/.tfgrid_cmd/...
 
 
 ## todo's
@@ -19,12 +21,11 @@
 - [ ] explain how feedback is given
 - [ ] make sure tfgridDB is also documented
 
-## Link to VLANG
+## will be used from VLANG
 
-- make supporting functions in vlang to go from schema and dump to json in format as needed for zoscmd
-- in other words the vlang is for now not using RMB directly but putting files in dir and calling the zoscmd
+- make supporting functions in vlang to go from schema and dump to json in format as needed for tfgrid_cmd
+- vlang is using the functions over RMB
 
-## RMDB
+!!!def alias:tfgrid_cmd
 
-- if needed re-implement in rust
-
+>TODO: PHASE2

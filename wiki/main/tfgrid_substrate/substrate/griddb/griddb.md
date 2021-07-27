@@ -13,7 +13,6 @@ A Twin object is digital representation of either a User, Node or a Farm. It fac
 
 
 - [Entity Relationship Diagram](griddb_schema)
-  - >TODO: need to change the schema to be in line with the specs
   - [griddb_entity](griddb_entity)
   - [griddb_farm](griddb_farm)
   - [griddb_node](griddb_node)

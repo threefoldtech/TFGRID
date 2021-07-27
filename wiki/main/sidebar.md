@@ -1,10 +1,15 @@
 
-- [griddb](griddb)
-- [zos specs](zos_specs)
-    - [zos deployment objects](https://github.com/threefoldtech/zos/tree/zos3/docs/pkg/gridtypes)
+- [Architecture](architecture.md)
+- [tfgrid_substrate](substrate_readme)
+  - [griddb obj](griddb)
+  - [grid db dev env](grid_substrate_develop)
+  - [grid_contract](grid_contract)
+- [Twin Server](twin_server)
+  - [twin_server_commands](twin_server_commands)
 - [Consensus Engine](internet4:consensus3)
-- [Grid3](grid_readme)
-- [Substrate](substrate_readme)
+- [zos specs](zos_specs)
+- [grid overview](grid_readme)
+- [enduser api](z_api)
 
 
 <!-- - [Why do we exist?](funding:why) -->

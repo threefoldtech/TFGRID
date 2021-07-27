@@ -1,4 +1,5 @@
 # Deployment contract
+
 The deployment contract is a contract between:
 - User (owner of deployment)
 - Node (Zos node)
@@ -11,6 +12,7 @@ The contract must satisfy the following requirements
 
 
 # Proposal #1
+
 This assumes the following constrains:
 - Nodes work solo. A node only is concerned about itself, and doesn't know or care about other nodes. This is how they implemented right now and this simplify the node life and makes it much easier to manage. A complex multi node setup is orchestrated by an external tool on the client side.
 - A single contract is between a **single** user and a **single** node. A multi node setup is orchestrated by the user, and the user need to create multiple contracts for each node involved in the development (this is to simplify the setup, a user can then read all his contracts and reconstruct his setup when needed)

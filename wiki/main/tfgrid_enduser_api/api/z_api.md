@@ -10,5 +10,6 @@ This is done by means of a zreservation.
 - [peer2peer network](api_znet)
 - [low level storage DB: ZDB](api_zdb)
 
+>TODO: KRISTOF NEEDS TO REDO TOGETHER WITH THABET
 
 !!!def alias:z_api
