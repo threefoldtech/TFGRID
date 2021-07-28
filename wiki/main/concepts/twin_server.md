@@ -27,7 +27,7 @@ graph TD
   - for 
     - wiki (flattened from publishing server)
     - website = gridsome or any other html website
-    - profy for running publishtools daemon who exposes wiki
+    - proxy for running publishtools daemon who exposes wiki
   - features
     - virtual hosts
     - prefix on website
