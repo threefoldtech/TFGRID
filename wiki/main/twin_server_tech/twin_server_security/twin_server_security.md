@@ -31,6 +31,10 @@ This way a client can create a new Stellar account for example using the nodejs 
 
 We don't want to bloat it with authorization configuration so let's externalize that.
 
+This also enables more complex scenario's like authorizing another user's twin to use a shared wallet without implementing all these scenario's in the nodejs component, it just needs a valid authorization object.
+
+Such authorization objects can be implemented with jwt's for example and created by a twin or a user itself.
+
 In essence this means that an authorization needs to be passed with a command. 
 
 > TODO define the authorization context structure to be passed, the involved  objects and commands
