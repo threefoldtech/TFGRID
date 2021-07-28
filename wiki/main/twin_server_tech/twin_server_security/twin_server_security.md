@@ -19,4 +19,20 @@ As a downside this does mean that the secrets need to be passed over the RMB or 
 A keystore and a "who through which app can do what" can be implemented seperately and gradually.
 
 The secret or credentials and the authorization can be passed to the nodejs component over the RMB.
-The nodejs component now has access to the account and can do a small validation check if the command is allowed. 
+The nodejs component now has access to the account and can do a small validation check if the command is allowed.
+
+This solution does not solve everything either, how would one do a `list` of the Stellar accounts for example?
+
+### Simplify it
+
+The nodejs component has access to the keystore
+
+This way a client can create a new Stellar account for example using the nodejs component over RMB without storing it itself in the keystore and list the the available accounts.
+
+We don't want to bloat it with authorization configuration so let's externalize that.
+
+In essence this means that an authorization needs to be passed with a command. 
+
+> TODO define the authorization context structure to be passed, the involved  objects and commands
+
+
