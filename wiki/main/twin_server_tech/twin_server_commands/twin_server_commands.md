@@ -1,10 +1,10 @@
 
-[tfgrid_commands](tfgrid_commands)
-[zos3_commands](zos3_commands)
-[drive](drive_commands)
-[ftp](ftp_commands)
-[wallet commands](wallet_commands)
-[webserver commands](webserver_commands)
+- [tfgrid_commands](tfgrid_commands)
+- [zos3_commands](zos3_commands)
+- [drive](drive_commands)
+- [ftp](ftp_commands)
+- [wallet commands](wallet_commands)
+- [webserver commands](webserver_commands)
 
 
 # twin_server_commands
