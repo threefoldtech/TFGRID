@@ -4,3 +4,4 @@
   
 > TODO: need to review the gridtypes
 
+- [notes on implementing clients](zos_client_development)

@@ -16,3 +16,4 @@
 
 - the workloads needs to be defined in a language that supports something like `json Raw Message` in golang.
 
+- signing requires libsodium and requires saving the mnemonics that got generated on substrate
