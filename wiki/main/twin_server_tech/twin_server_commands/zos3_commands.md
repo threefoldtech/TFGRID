@@ -84,9 +84,8 @@ list network public IPs
 returns node's public config
 
 ```
+
 type PublicConfig struct {
-	// Type define if we need to use
-	// the Vlan field or the MacVlan
 	Type IfaceType `json:"type"`
 	// Vlan int16     `json:"vlan"`
 	// Macvlan net.HardwareAddr
@@ -97,7 +96,6 @@ type PublicConfig struct {
 	GW4 net.IP `json:"gw4"`
 	GW6 net.IP `json:"gw6"`
 
-	// Version int `json:"version"`
 }
 
 ```
