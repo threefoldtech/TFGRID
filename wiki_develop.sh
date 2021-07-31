@@ -1,3 +1,3 @@
-cd wiki
-bash ../wiki/develop.sh
+cd wiki_cmds
+bash develop.sh
 

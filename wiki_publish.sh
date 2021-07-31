@@ -1,3 +1,3 @@
-cd wiki
-bash ../wiki/publish.sh
+cd wiki_cmds
+bash publish.sh
 
