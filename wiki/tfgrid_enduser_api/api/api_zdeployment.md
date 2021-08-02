@@ -17,10 +17,6 @@ pub mut:
     //useful for multisignature
 	description string
     reservations []ZReservationLink
-    signatures [Signature]
-    //min amount of signatures required
-    signatures_min int
-
 }
 
 // is a remote wireguard client which can connect to this node
