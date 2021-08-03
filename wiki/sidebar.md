@@ -11,6 +11,8 @@
 - [grid overview](grid_readme)
 - [enduser api](z_api)
 - [Architecture](architecture)
+  -  [RMB](rmb_architecture)
+  
 
 
 <!-- - [Why do we exist?](funding:why) -->
