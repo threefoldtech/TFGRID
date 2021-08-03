@@ -19,15 +19,15 @@ pub mut:
 
 pub struct ZmachineNetwork{
 pub mut:
-	public_ip		 []string
+	public_ip	 string    ## public ip n
 	interfaces       []ZNetworkInterface
 	planetary		 bool
 }
 
 pub struct ZNetworkInterface{
 pub mut:
-	network          string				//WHAT DOES THIS MEAN, please describe TODO:
-	ip               string				//what is relation with public_ip?
+	network          string				//this is the znet private network name
+	ip               string				//this is the ip with in the znet private network
 }
 
 pub struct ComputeCapacity {
