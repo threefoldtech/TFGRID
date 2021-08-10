@@ -1,22 +1,39 @@
 
+
 FROM gitpod/workspace-full:latest
 
 USER root
 RUN apt-get update && apt-get install -y redis-server mc
 
-#install node & rmb 
-ADD ct_scripts/install_v_rmb.sh /tmp/install_v_rmb.sh
-RUN sudo bash /tmp/install_v_rmb.sh
 
-#prepare for gitpod nodejs env
-ADD ct_scripts/install_node.sh /tmp/install_node.sh
-RUN sudo bash /tmp/install_node.sh
+# RUN apt-get update && \
+#     apt-get install -yq sudo
 
+# RUN apt install -y redis-server
 
+### Gitpod user ###
+# '-l': see https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#user
+# RUN useradd -l -u 33333 -G sudo -md /home/gitpod -s /bin/bash -p gitpod gitpod \
+#     # passwordless sudo for users in the 'sudo' group
+#     && sed -i.bkp -e 's/%sudo\s\+ALL=(ALL\(:ALL\)\?)\s\+ALL/%sudo ALL=NOPASSWD:ALL/g' /etc/sudoers
+# ENV HOME=/home/gitpod
+# WORKDIR $HOME
 
+# USER gitpod
 
-# install tfgrid-substrate
+# ADD install.sh /tmp/install.sh
+# ADD build.sh /tmp/build.sh
+# ADD publishtools/ /tmp/publishtools/
 
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - && echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list && sudo apt update && sudo apt install -y yarn
+# RUN bash /tmp/install.sh
+# RUN cd /tmp && bash /tmp/build.sh
 
-# RUN cd cli-tool && sudo yarn
+# RUN apt-get clean && rm -rf /var/cache/apt/* && rm -rf /var/lib/apt/lists/* && rm -rf /tmp/*
+
+USER gitpod
+
+# RUN publishtools flatten || echo "flatten 1"
+# #need to do 2 times, leave as this
+# RUN publishtools flatten
+
+# ENTRYPOINT [ "entrypoint.sh" ]
