@@ -7,7 +7,8 @@
 
 ## concept
 
-- doing https proxy towards planetary network enabled backend
+- doing https proxy towards planetary network or other ipv6 enabled backend
+- if pnet then traffic is end2end encrypted, at back its http or https (can be http)
 - user can select name (domain or just name), which is unique globally, see [pricing table](https://info.threefold.io/#/threefold__grid_pricing)
 - http(s) goes to any specified ipv6 address on back (can be planetary network or even public ipv6 addr)
 - measurementis done per name and GB are being billed for user.
@@ -33,6 +34,7 @@
 ## primitive workload def
 
 - name.$webgatewayurl or full domain name to backend ip addr (ipv6 backend)
+- backend can be ipaddr:port over http or https
 - which webgateways to be used + which ip addr to be used (because proxy can have multiple ip addr)
 - max nr of GB per month (protection for user,so user can make sure not to go over certain limit, once limit reached no more traffic accepted)
 

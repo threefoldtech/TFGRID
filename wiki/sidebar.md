@@ -9,6 +9,7 @@
 - [Consensus Engine](internet4:consensus3)
 - [zos specs](zos_specs)
 - [grid overview](grid_readme)
+!!!include:networking_toc
 - [enduser api](z_api)
 - [Architecture](architecture)
   -  [RMB](rmb_architecture)
