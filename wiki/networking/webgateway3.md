@@ -1,14 +1,15 @@
 # WebGateway 3.0
 
-- choose a suitable web proxy solution
+- choose a suitable web proxy solution (traeffic?)
 - create primitive datastructure to send to web proxy over RMB for provisioning
 - register workload as part of smart contract concept on Substrate
-- bill bandwidth used a  proxy level
+- bill bandwidth per deployment as used on web proxy
 
 ## concept
 
-- doing https proxy towards planetary network or other ipv6 enabled backend
-- if pnet then traffic is end2end encrypted, at back its http or https (can be http)
+- doing http(s) proxy towards planetary network or other ipv6 enabled backend
+- if pnet then traffic is end2end encrypted, at back its http or https
+- when https on full domain only, then https forwarding is possible (so no SSL offload) = user needs to arrange certificate
 - user can select name (domain or just name), which is unique globally, see [pricing table](https://info.threefold.io/#/threefold__grid_pricing)
 - http(s) goes to any specified ipv6 address on back (can be planetary network or even public ipv6 addr)
 - measurementis done per name and GB are being billed for user.
@@ -18,7 +19,6 @@
 ## requirements for web proxy part
 
 - few binaries, as contained as possible
-    - install script to deploy on any ubuntu above 20.04
 - only param needed = farmid + mnemonic of account which owns farm
 
 ## billing remarks
@@ -26,10 +26,9 @@
 - farmer receives for traffic going to/from webgateway see https://circles.threefold.me/project/despiegk-req_tfgrid_3_0/issue/17
 - the user gets billed in line with https://info.threefold.io/#/threefold__grid_pricing (per GB)
 
-## blockchain remards
+## blockchain rewards
 
 - each webgateway can be registered with 1 or more IPv4 addr
-- 
 
 ## primitive workload def
 
