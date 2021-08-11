@@ -11,6 +11,8 @@
 - user can select name (domain or just name), which is unique globally, see [pricing table](https://info.threefold.io/#/threefold__grid_pricing)
 - http(s) goes to any specified ipv6 address on back (can be planetary network or even public ipv6 addr)
 - measurementis done per name and GB are being billed for user.
+- each wgw has unique domain name $location$nr.grid.tf e.g. dubai1.grid.tf
+- everyone with one or more ipaddr can put wgw's 
 
 ## requirements for web proxy part
 
@@ -23,10 +25,16 @@
 - farmer receives for traffic going to/from webgateway see https://circles.threefold.me/project/despiegk-req_tfgrid_3_0/issue/17
 - the user gets billed in line with https://info.threefold.io/#/threefold__grid_pricing (per GB)
 
+## blockchain remards
+
+- each webgateway can be registered with 1 or more IPv4 addr
+- 
+
 ## primitive workload def
 
-- domain name to backend ip addr
-
+- name.$webgatewayurl or full domain name to backend ip addr (ipv6 backend)
+- which webgateways to be used + which ip addr to be used (because proxy can have multiple ip addr)
+- max nr of GB per month (protection for user,so user can make sure not to go over certain limit, once limit reached no more traffic accepted)
 
 > TODO: define & link to the spec
 
