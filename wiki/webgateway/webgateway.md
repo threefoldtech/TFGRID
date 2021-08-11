@@ -5,6 +5,10 @@
 - register workload as part of smart contract concept on Substrate
 - bill bandwidth used a  proxy level
 
+## concept
+
+- doing https proxy towards planetary network enabled backend
+
 ## requirements for web proxy part
 
 - few binaries, as contained as possible
@@ -17,6 +21,9 @@
 - the user gets billed in line with https://info.threefold.io/#/threefold__grid_pricing (per GB)
 
 ## primitive workload def
+
+- domain name to backend ip addr
+
 
 > TODO: define & link to the spec
 
