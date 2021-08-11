@@ -1,8 +1,8 @@
-# WebGateway
+# WebGateway 3.0
 
 - choose a suitable web proxy solution
-- create primitive datastructure to send to web proxy over RMB
-- register as part of smart contract concept on Substrate
+- create primitive datastructure to send to web proxy over RMB for provisioning
+- register workload as part of smart contract concept on Substrate
 - bill bandwidth used a  proxy level
 
 ## requirements for web proxy part
