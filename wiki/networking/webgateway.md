@@ -8,6 +8,9 @@
 ## concept
 
 - doing https proxy towards planetary network enabled backend
+- user can select name (domain or just name), which is unique globally, see [pricing table](https://info.threefold.io/#/threefold__grid_pricing)
+- http(s) goes to any specified ipv6 address on back (can be planetary network or even public ipv6 addr)
+- measurementis done per name and GB are being billed for user.
 
 ## requirements for web proxy part
 
@@ -34,4 +37,6 @@
 - [ ] spec how to gather billing info 
 - [ ] spec how to gather info to reward farmer
 - [ ] spec how to do provisioning
+
+!!!def alias:webgateway3,wgw3,wgw
 
