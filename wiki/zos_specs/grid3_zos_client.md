@@ -42,6 +42,11 @@ Steps to deploy a test scenario using zos3, yggdrasil,polkadot.
   - Module -> tfgridModule
   - Method -> twinID(): u32
 
+## cloning the grid client repo
+
+need to clone the repo using `git clone https://github.com/threefoldtech/grid3_client_ts`
+
+
 ## Start RMB (Reliable Message Bus)
 
 - Clone the [RMB repo](https://github.com/threefoldtech/rmb)
