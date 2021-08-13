@@ -8,6 +8,7 @@
   - [Twin Server security](twin_server_security)
 - [Consensus Engine](internet4:consensus3)
 - [zos specs](zos_specs)
+- [grid3 zos client](grid3_zos_client)
 - [grid overview](grid_readme)
 !!!include:networking_toc
 - [enduser api](z_api)
