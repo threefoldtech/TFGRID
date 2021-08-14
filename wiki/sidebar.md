@@ -3,6 +3,7 @@
   - [griddb obj](griddb)
   - [grid db dev env](grid_substrate_develop)
   - [grid_contract](grid_contract)
+  - [substrate getting started](grid_substrate_getting_started)
 - [Twin Server](twin_server)
   - [twin_server_commands](twin_server_commands)
   - [Twin Server security](twin_server_security)
