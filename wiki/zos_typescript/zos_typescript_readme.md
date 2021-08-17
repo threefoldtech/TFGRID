@@ -31,3 +31,7 @@ npm install
     cd scripts
     tsc test_kubernetes.ts && node test_kubernetes.js
     ```
+
+
+
+check [deploy_with_typescript](deploy_with_typescript) for more detailed information

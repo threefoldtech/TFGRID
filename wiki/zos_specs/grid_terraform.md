@@ -76,7 +76,7 @@ resource "grid_deployment" "d1" {
 
 ## Using the provider
 
-to create your twin please check [polka_grid](polka_grid)
+to create your twin please check [grid substrate getting started](grid_substrate_getting_started)
 
 ```bash
 ./msgbusd --twin <TWIN_ID> #run message bus with your twin id
@@ -89,3 +89,7 @@ terraform init && terraform apply
 ```bash
 terraform destroy
 ```
+
+
+# TODO
+add more examples

@@ -1,3 +1,4 @@
+
 # Test setup
 
 Steps to deploy a test scenario using zos3, yggdrasil,polkadot.
@@ -5,10 +6,21 @@ Steps to deploy a test scenario using zos3, yggdrasil,polkadot.
 ## Create twin
 
 ### 1. Create account on substrate using polkadot
+
+- Add the required [types in json format](https://github.com/threefoldtech/tfgrid-api-client/blob/master/types.json) to the [developer settings](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fexplorer.devnet.grid.tf%2Fws#/settings/developer) in polkadot. *note: don't forget to save*
+![](img/substrate_types.png)
+
 - Click on `Add an account` in [polkadot accounts](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fexplorer.devnet.grid.tf%2Fws#/accounts)
 - Save the mnemonic seed in a safe place
+
+- Click on `Advanced creation options` and select the keyword crypto type of **`Edwards (ed25519, alternative)`**
+`
+![](img/add_account_1.png)
 - Add a name and password for your account (remember the password for future usage)
+![](img/add_account_2.png)
+![](img/add_account_3.png)
 - Fund the account with test funds (Click on send funds from the account of Alice to your account name)
+![](img/substrate_send_funds.png)
 
 ### 2. Setup yggdrasil (optional to obtain public Ipv6 address)
 
@@ -20,6 +32,14 @@ Steps to deploy a test scenario using zos3, yggdrasil,polkadot.
 
         yggdrasil -useconffile /etc/yggdrasil.conf
 - Add the needed [peers](https://publicpeers.neilalexander.dev/) in the config file generated under Peers.
+
+  **example**:
+
+        Peers:
+        [
+        tls://54.37.137.221:11129
+        ]
+
 - Restart yggdrasil by
 
         systemctl restart yggdrasil
@@ -38,14 +58,13 @@ Steps to deploy a test scenario using zos3, yggdrasil,polkadot.
   - ip -> Ipv6 obtained from your yggdrasil
 - Submit transaction and enter password selected when creating the account
 
+![](img/substrate_create_twin.png)
+
 - To get your twin ID, select the options required in [polkadot developer chainstate](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fexplorer.devnet.grid.tf%2Fws#/chainstate) and click on the +
   - Module -> tfgridModule
   - Method -> twinID(): u32
 
-## cloning the grid client repo
-
-need to clone the repo using `git clone https://github.com/threefoldtech/grid3_client_ts`
-
+![](img/substrate_twin_id.png)
 
 ## Start RMB (Reliable Message Bus)
 
@@ -65,15 +84,55 @@ To have the successful deployment it should include the following:
 
 - 1 network deployment (znetwork)
 - 2 disk (zmount)
-- 2 virtual machines (zmachine) where one is considered the mastere node and the other is the worker node
+- 2 virtual machines (zmachine) where one is considered the master node and the other is the worker node
+- 1 public IP attached to the kubernetes master node
 
 ### To deploy
 
 ### 1. Run test script with twinId to deploy 2
 
-The test script can be found and used by following the steps in the README of [zos_typescript repo](../README.md)
+The test script can be found and used by following the steps in the README of [grid3_client_ts repo](readme)
 
-### 2. Wireguard needed to connect to the deployment
+### 2. Connect to the deployment over the public network
+
+Edit `get_deployment.ts` script with the contract ID and Run it to get the deployment result.
+
+```bash
+cd ../scripts
+tsc get_deployment.ts && node get_deployment.js 
+```
+
+And get the public IP from the public IP workload result.
+
+```json
+        ...
+        {
+            "version": 0,
+            "name": "zpub",
+            "type": "ipv4",
+            "data": {},
+            "metadata": "zpub ip",
+            "description": "my zpub ip",
+            "result": {
+                "created": 1629128139,
+                "state": "ok",
+                "message": "",
+                "data": {
+                    "ip": "185.206.122.33/24",
+                    "gateway": "185.206.122.1"
+                }
+            }
+        }
+        ...
+```
+
+Then ssh to the master public IP.
+
+```bash
+ssh root@<public_ip>
+```
+
+### 3. Wireguard needed to connect to the deployment over the private network
 
     [Interface]
     Address = 100.64.240.2/32
@@ -84,9 +143,11 @@ The test script can be found and used by following the steps in the README of [z
     PersistentKeepalive = 25
     Endpoint = 185.206.122.31:6835
 
-    ## example creating a zmachine 
 
-    ```typescript
+
+## example creating a zmachine 
+
+  ```typescript
 
     import { Znet, Peer } from "./zos/znet";
 import { Zmount } from "./zos/zmount";

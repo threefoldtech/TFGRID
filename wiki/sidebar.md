@@ -1,4 +1,4 @@
-
+- [grid overview](grid_readme)
 - [tfgrid_substrate](substrate_readme)
   - [griddb obj](griddb)
   - [grid db dev env](grid_substrate_develop)
@@ -9,8 +9,15 @@
   - [Twin Server security](twin_server_security)
 - [Consensus Engine](internet4:consensus3)
 - [zos specs](zos_specs)
-- [grid3 zos client](grid3_zos_client)
-- [grid overview](grid_readme)
+  - [grid caching api proxy](grid_proxy_server_readme)
+  - [zos client development](zos_client_development)
+- zos deployments automation
+  - [zos typescript client](zos_typescript_readme)
+  - [deploy with typescript](deploy_with_typescript)
+  - [terraform provider](terraform_provider)
+  - [deploy with terraform](grid_terraform)
+  
+
 !!!include:networking_toc
 - [enduser api](z_api)
 - [Architecture](architecture)
