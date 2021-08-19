@@ -16,6 +16,8 @@
   - [deploy with typescript](deploy_with_typescript)
   - [terraform provider](terraform_provider)
   - [deploy with terraform](grid_terraform)
+- farming
+  - [create farm](create_farm)
   
 
 !!!include:networking_toc
