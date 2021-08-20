@@ -6,6 +6,8 @@ Before a Node object can be registered, the node's keypair must be activated on 
 
 With this Twin's keypair a Node object should be registered, again Zero-OS is responsible for this. On boot Zero-OS will create a Node object on chain with the proper Farm ID, resources, public config and location. This way Twin and a Node will be linked to eachother.
 
+The location is fetched from https://geoip.grid.tf/ , based on the Node's IP Address. The country ISO 3166-1 is extracted and set on the Node object to be created on chain, as well as the city's name. 
+
 This Farm ID is passed as a kernel argument on the boot process. When a Farm ID is set, only the Farm with that ID can manage this Node.
 
 When all object are properly registered on chain (Twin and Node). The Node can accept workloads and bill the consumer's wallet accordingly.

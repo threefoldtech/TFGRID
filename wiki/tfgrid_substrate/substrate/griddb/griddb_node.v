@@ -11,10 +11,10 @@ pub mut:
 	//twin who operates on 3Node (accepts zreservations)
 	//needed to communicate over RMB
 	twin_id int
-	// id of the country
-    country_id int
-	// if of a city
-    city_id int
+	// ISO 3166-1 2 letter code
+    country string
+	// name of a city
+    city string
 	//what resources are available per 3Node
 	//set by the 3node itself
 	resources NodeResources

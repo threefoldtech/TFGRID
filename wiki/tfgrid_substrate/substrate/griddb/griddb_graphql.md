@@ -13,8 +13,8 @@ json
         gridVersion,
         entityId,
         name,
-        countryId,
-        cityId,
+        country,
+        city,
         address
     }
 }
@@ -48,8 +48,6 @@ json
         farmId,
         twinId,
         name,
-        countryId,
-        cityId,
         pricingPolicyId,
         certificationType
         publicIPs{
@@ -102,7 +100,7 @@ json
 {
   cities(limit:1) {
     name,
-    countryId
+    country
   }
 }
 ```
