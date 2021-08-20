@@ -9,10 +9,6 @@ pub mut:
 	// name of farm
     name string
     certification_type CertificationType
-	// id of the country
-    country_id int
-	// if of a city
-    city_id int
 	//available public ipaddr
 	public_ips []PublicIP
 	//link to twin who owns this farm
@@ -44,8 +40,6 @@ fn example(){
 		id: 999
 		name: "Some Name For My Farm"
 		certification_type: CertificationType.diy
-		country_id: 10
-		city_id: 5
 		public_ips:[
 			{
 				ip: "212.3.247.26"
