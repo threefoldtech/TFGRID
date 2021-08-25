@@ -57,10 +57,12 @@ The web gateway to be operational need to do the following main tasks:
 ## Discussion
 ### Standalone WebGateway VS. Builtin inside ZOS
 Currently there are two approaches to implement this
-- Built in zos
-- Stand alone web-gateways
+- [x] Built in zos
+- [ ] Stand alone web-gateways
 
 We need to decide which one to implement since it won't be possible to support both approaches
+
+> NOTE: it has beed decided to build gateway as part of zos, we will still keep this comparison for completion
 #### Builtin ZOS
 This has lots of benefits:
 - ZOS already work against contracts, and adding a new work-load type is a trivial task.
@@ -91,6 +93,19 @@ ZOS can then process web-gateway workload(s)
   - Make a call to the web-gateway damon (new)  daemon that is maintaining both dns and proxy config
 - The gateway daemon, will then apply the required config to both proxy and dns.
 
+## Need to be done on zos
+- Add new web-gateway type with proper parameters
+- Build a gateway daemon. this one need to:
+  - Start the proxy with the correct initial configuration
+  - Abstracts configuration for the actual proxy server
+  - Add/Remove routes (based on reserved names)
+  - Providing metrics for consumed traffic ? (need investigation)
+- Build handler for the new web-gateway workload type.
+  - Validate ownership of the name (against blockchain)
+  - Make prober call to gateway daemon to add/remove route.
+- Consumption reports
+  - Special handler for the gateway-type to get consumption report
+    from gateway daemon for this specific workload
 ## Components to work with
 - Proxy: to be selected currently studying traefik and so far looks like a very good option
 - DNS: dnsmasq ?
