@@ -16,6 +16,7 @@
   - [deploy with typescript](deploy_with_typescript)
   - [terraform provider](terraform_provider)
   - [deploy with terraform](grid_terraform)
+  - [terraform k8s demo](terraform_k8s)
 - farming
   - [create farm](create_farm)
   
