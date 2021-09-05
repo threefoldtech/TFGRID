@@ -2,7 +2,7 @@
 
 This document only describes how to use the low level primitives on the TFGrid.
 
-The higher level services like Kubernetes, [3Bot](internet4:3bot) and [Quantum Safe Filesystem](quantumsafestorage:qsfs) are layers using these primitives.
+The higher level services like Kubernetes, [3Bot](3bot) and [Quantum Safe Filesystem](quantumsafestorage:qsfs) are layers using these primitives.
 
 
 # TFGrid 3.0 Summer 2021

@@ -20,18 +20,18 @@ npm install
 
 - One virtual machine with ubuntu
 
-    ```bash
-    cd scripts
-    tsc test.ts && node test.js
-    ```
+```bash
+cd scripts
+tsc test.ts && node test.js
+```
 
 - Two virtual machines with kubernetes master and worker nodes
 
-    ```bash
-    cd scripts
-    tsc test_kubernetes.ts && node test_kubernetes.js
-    ```
+```bash
+cd scripts
+tsc test_kubernetes.ts && node test_kubernetes.js
+```
 
-
+>TODO: where are these scripts?
 
 check [deploy_with_typescript](deploy_with_typescript) for more detailed information

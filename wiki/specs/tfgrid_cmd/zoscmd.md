@@ -4,7 +4,7 @@
 
 - tfgrid_cmd = command line which can process dir with workload defs inside
 - each workload def is a json or yaml file which describes one of the X primitives
-- all primitives in [tfgrid_primitives](internet4:tfgrid_primitives) need to be supported
+- all primitives in [tfgrid_primitives](tfgrid_primitives) need to be supported
 - tfgrid_cmd will talk to TFGRIDDB and RMB to bring primitives alive
 - do logging in a text file in the dir
 - the workload defs can be modified to have the feedback inside

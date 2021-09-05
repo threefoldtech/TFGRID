@@ -5,6 +5,7 @@
 
 
 ## notes
+
 - script to get deployment https://github.com/threefoldtech/vgrid/blob/development/getdeployment.v
 
 - script to create deployment https://github.com/threefoldtech/vgrid/blob/- development/testdeployment.v (this one has wireguard, zmount, zmachine + ssh)

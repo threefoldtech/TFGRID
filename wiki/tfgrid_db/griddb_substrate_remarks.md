@@ -62,9 +62,6 @@ Or you could use the polkadot UI apps to call extrinsics from the browser:
 
 https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fexplorer.devnet.grid.tf%2Fws#/extrinsics
 
-
-
-
 ## Graphql
 
 We store every creation / update / deletion of above objects in a graphql database. An end user of any other application can query the objects from the substrate database without having to talk to the substrate nodes. 

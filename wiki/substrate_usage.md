@@ -1,23 +1,24 @@
 
 
 ![](img/parity.png)
+
 # Parity/Substrate Usage In ThreeFold
 
 ## Smart Contract for IT
 
-see [Smart Contract for IT](internet4:smartcontract_it)
+see [Smart Contract for IT](smartcontract_it)
 
 For our TFGrid 3.0 will be implemented using parity substrate.
 
 ## ThreeFold Token = TFT
 
-see [money blockchain integration](internet4:money_blockchain_partity_link)
+see [money blockchain integration](money_blockchain_partity_link)
 
 as side chain to Polkadot or Kusama.
 
 ## Consensus Mechanism for TFGrid
 
-see [consensus layer](internet4:consensus3).
+see [consensus layer](consensus3).
 
 Constructs to manage our TFGrid.
 
