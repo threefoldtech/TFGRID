@@ -1,12 +1,14 @@
 # Reliable Message Bus
 
-Communication mechanism between all components in TFGrid.
+The Reliable Message Bus is the communication mechanism between all components on the TFGrid. Messages are sent and received over this message buds in a 100% peer-to-peer setup. Both client and server use the same structure. 
 
-Works 100% peer2peer.
+### Schema
 
-Benefits
+![Schema](./img/zbus.png) 
 
-- reliable (retransmit, 1 time delivery, ...)
+### Benefits
+
+- Reliable (retransmit, 1 time delivery, ...)
 - ...
 
 
