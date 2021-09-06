@@ -23,7 +23,7 @@ A Twin object is digital representation of either a User, Node or a Farm. It fac
 - [griddb_graphql](griddb_graphql)
 
 
-
+> TODO: this needs to be verified again and improved
 
 
 > TODO: billing per hour, and need to be in billing record (DYLAN), billing done per contract
