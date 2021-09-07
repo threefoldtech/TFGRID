@@ -35,6 +35,7 @@ Features :
 - Use RMB = peer2peer secure Reliable Message Bus to communicate with Zero-OS
 
 ### Billing
+
 - Resource utilisation is captured and calculated on hourly basis
 - Resource utilisation stored in TFChain
 - An automated discount system has been put in place, rewarding users who pre-purchased their cloud needs. Price discounts are applied, in line with amount of TFT you have in your account and the period you are holding these TFT.
@@ -52,10 +53,10 @@ The architecture can be described as follows:
 - Everything that needs to talk to other components should live on the network of components that talk to each other through Yggdrasil (the 'Yggdrasil network').
 - Nodes and users have to create a “twin” object on Grid-DB which is associated with an Yggdrasil IP address. Then to communicate with any twin, the IP can be looked up using the twin ID. This is basically how RMB works.
 - When starting for the first time, the node needs to self-register on the Grid-DB, which is a decentralized database, built on top of Substrate. The registration need to have information about:
-  - Which farm it belongs to
-  - What capacity it has
-  - Twin ID for that node (which is associated with its Yggdrasil IP)
-  - Public Configuration
+  - Which farm it belongs to;
+  - What capacity it has;
+  - Twin ID for that node (which is associated with its Yggdrasil IP);
+  - Public Configuration.
 - Once an identity has been created, secure and trusted communication can be established between the different parties.
 - Before deploying a workload, a user needs to go through the following steps :
   - Create a **contract** on Substrate, which describes the conditions under which capacity is reserved (with whom, for how long, ...)
