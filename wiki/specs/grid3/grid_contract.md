@@ -1,23 +1,23 @@
 # Deployment contract
 
-> TODO: kristof to improve
+<!--- >> TODO: kristof to improve ---> 
 
 The deployment contract is a contract between:
-- User (owner of deployment)
-- Node (Zos node)
+- User (owner of deployment, reserving the capacity)
+- Node (Zero-OS node, the piece of hardware that is reserved)
 
-The contract must satisfy the following requirements
+The contract must satisfy the following requirements : 
 
-- The user must be able to "reconstruct" his deployment. He (at any time) should be able to read the history of hist deployments, and reconstruct the full setup from the blockchain (substrate)
-- The user information in the contract must be private to the user, even when the blockchain is public, only the user can read the "content" of this contract.
-- The node must be able to validate the contract
+- The user must be able to "reconstruct" his deployment. He should be able to read the history of his deployments at any time, and reconstruct the full setup from the blockchain (Substrate);
+- The user information in the contract must be private to the user, even when the blockchain is public. Only the user can read the "content" of this contract;
+- The node must be able to validate the contract.
 
 
 # Proposal #1
 
-This assumes the following constrains:
-- Nodes work solo. A node only is concerned about itself, and doesn't know or care about other nodes. This is how they implemented right now and this simplify the node life and makes it much easier to manage. A complex multi node setup is orchestrated by an external tool on the client side.
-- A single contract is between a **single** user and a **single** node. A multi node setup is orchestrated by the user, and the user need to create multiple contracts for each node involved in the development (this is to simplify the setup, a user can then read all his contracts and reconstruct his setup when needed)
+This assumes the following constraints:
+- Nodes work solo. A node only is concerned about itself, and doesn't know or care about other nodes. This is how it's implemented right now and this simplifies the node life and makes it much easier to manage. A complex multi-node setup is orchestrated by an external tool on the client side.
+- A single contract is between a **single** user and a **single** node. A multi-node setup is orchestrated by the user, and the user need to create multiple contracts for each node involved in the development (this is to simplify the setup, a user can then read all his contracts and reconstruct his setup when needed)
 - _OPTIONAL_: Single contract for multiple nodes probably can be implemented but will make implementing validation way more complex.
 
 ## Implementation
