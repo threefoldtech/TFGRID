@@ -25,7 +25,7 @@ contract = {
     contract_id: contractID,
     twin_id: NumericTwinID for the contract,
     // node_address is the node address.
-    node_address: "<node address>"
+    node_id: NumericNodeID
     // data is the encrypted deployment body. This encrypted the deployment with the **USER** public key. So only the user can read this data later on (or any other key that he keeps safe).
     // this data part is read only by the user and can actually hold any information to help him reconstruct his deployment or can be left empty.
     data: encrypted(deployment) // optional
@@ -35,12 +35,10 @@ contract = {
     // public_ips: number of ips that need to be reserved by the contract and used by the deployment
     public_ips: 0,
     state: ContractState (created, deployed),
-    last_updated: timestamp in second from last update,
-    previous_nu_reported: previous reported used network units to calculate usage,
     public_ips_list: list of public ips on this contract
 }
 ```
-The `node_address` field is the target node's address. A user can do lookup for a node to find it's corresponding address.
+The `node_id` field is the target node's id. A user can do lookup for a node to find it's corresponding id.
 
 The workload data is encrypted by the user and contains the workload definition for the node.
 
@@ -50,7 +48,7 @@ This pallet saves this data to storage and returns the user a `contract_id`.
 
 ## 2: The user sends the contractID and workload through the RMB to the destination Node.
 
-The Node reads from the [RMB](https://github.com/threefoldtech/rmb) and sees a deploy command, it reads the contractID and workload definition from the payload. 
+The Node reads from the [RMB](https://github.com/threefoldtech/rmb) and sees a deploy command, it reads the contractID and workload definition from the payload.
 It decodes the workload and reads the contract from chain using the contract ID, the Node will check if the user that created the contract and the deployment hash on the contract is the same as what the Node receives over RMB. If all things check out, the Node deploys the workload.
 
 ## 3: The Node sends consumption reports to the chain
@@ -76,11 +74,11 @@ The node can call `add_reports` on this module to submit reports in batches.
 
 Usage of SU, CU and NU will be computed based on the prices and the rules that Threefold set out for cloud pricing.
 
-Billing will be done in Database Tokens and will be send to the corresponding farmer. If the user runs out of funds the chain will set the contract state to `canceled` or it will be removed from storage. The Node needs to act on this contact canceled event and decomission the workload. 
+Billing will be done in Database Tokens and will be send to the corresponding farmer. If the user runs out of funds the chain will set the contract state to `canceled` or it will be removed from storage. The Node needs to act on this contact canceled event and decomission the workload.
 
 The main currency of this chain. More information on this is explained here: TODO
 
 ## Footnote
 
-Sending the workloads encrypted to the chain makes sure that nobody except the user can read his deployment data, this also facilitates a way for the user to recreate his workload data from the chain. 
+Sending the workloads encrypted to the chain makes sure that nobody except the user can read his deployment data, this also facilitates a way for the user to recreate his workload data from the chain.
 This way we also don't need to convert all the Zero OS primitive types to a Rust implementation and we can keep it relatively simple.
