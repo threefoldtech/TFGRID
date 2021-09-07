@@ -1,31 +1,31 @@
 # Introduction
 
-> TODO: this doc needs to be broken appart in different parts
+> TODO: this doc needs to be broken apart in different parts
 
 
 This document is about tf-grid 3.0. It shows an overview of the grid regarding operation, and how different components communicate to each other.
 
 ## Definitions
 
-- 3node: a machine that runs zos operating system.
-- RMB: reliable message bus
-- grid_db: a decentralized block chain database that allows nodes and other twins to share trusted data. Anyone can look up nodes and verify their identity, find their corresponding twin IDs to communicate over RMB.
+- 3Node: a machine that runs zos operating system.
+- RMB: Reliable Message Bus
+- Grid-DB: a decentralized block chain database that allows nodes and other twins to share trusted data. Anyone can look up nodes and verify their identity, find their corresponding twin IDs to communicate over RMB.
 
 # Overview
 
 ![Overlay](img/grid3_overlay.png)
 
 The operation can be described as follows:
-- Everything that needs to talk to other components should live on the yggdrasil network.
-- Nodes and users have to create a “twin” object on GridDB which is associated with an Yggdrasil IP. Then to communicate with any twin, the IP can be looked up using the twin id. This is basically how RMB works.
-- When starting for the first time, the node needs to register itself on the grid database, which is a decentralized database built on top of substrate. The registration need to have information about:
+- Everything that needs to talk to other components should live on the network of components that talk to each other through Yggdrasil (the 'Yggdrasil network').
+- Nodes and users have to create a “twin” object on Grid-DB which is associated with an Yggdrasil IP address. Then to communicate with any twin, the IP can be looked up using the twin ID. This is basically how RMB works.
+- When starting for the first time, the node needs to self-register on the Grid-DB, which is a decentralized database, built on top of Substrate. The registration need to have information about:
   - Which farm it belongs to
   - What capacity it has
   - Twin ID for that node (which is associated with its Yggdrasil IP)
-  - Public Config
-- Once identity has been established, secure and trusted communication can be established between the different parties.
-- For a user to deploy a workload he need to do the following:
-  - Create a **contract** on substrate
+  - Public Configuration
+- Once an identity has been created, secure and trusted communication can be established between the different parties.
+- Before deploying a workload, a user needs to go through the following steps :
+  - Create a **contract** on Substrate, which describes the conditions under which capacity is reserved (with whom, for how long, ...)
     - The **contract** is described in more details [here](contract)
     - It also has required number of public IPs to be reserved from the farm (in case you have public ips in your deployment definition)
   - Substrate needs to validate the contract, user, funds and lock up required public ips from the farm object.
