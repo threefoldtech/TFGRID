@@ -1,23 +1,22 @@
 # Smart Contract for IT on the blockchain
 
-## Proposed architecture
+## Architecture
 
-Two main components will play a role in achieving a decentralised consensus between a user and a farmer.
+Two main components play a role in achieving a decentralised consensus between a user and a farmer.
 
-1: TFGrid Substrate Database Pallet TFGrid
-2: TFGrid Smart Contract
+- TFGrid Substrate Database Pallet TFGrid
+- TFGrid Smart Contract
 
-The TFGrid Substrate Database will keep a record of all Entities, Twins, Nodez and Farmers in the TF Grid network. This makes it easy to integrate the Smart Contract on Substrate as well since we can read from that storage in Runtime.
+The TF-Grid Substrate Database will keep a record of all Entities, Twins, Nodes and Farmers in the TF-Grid network. This makes it easy to integrate the Smart Contract on Substrate as well since we can read from that storage in runtime.
 
 check flow diagram: [flow](flow.png)
 ![flow](img/flow.png)
 
-The Smart Contract on Substrate will work as following:
+The Smart Contract on Substrate works as following:
 
 ## 1: The user wants to deploy a workload, he interacts with this smart contract pallet and calls: `create_contract` with the input being:
 
 The user must instruct his twin to create the contract. *This program containing his digital twin is yet to be defined.* A contract will always belong to a twin and to a node. This relationship is important because only the user's twin and target node's twin can update the contract.
-
 
 ```js
 contract = {
@@ -38,11 +37,12 @@ contract = {
     public_ips_list: list of public ips on this contract
 }
 ```
-The `node_id` field is the target node's id. A user can do lookup for a node to find it's corresponding id.
+
+The `node_id` field is the target node's ID. A user can do lookup for a node to find its corresponding ID.
 
 The workload data is encrypted by the user and contains the workload definition for the node.
 
-If `public_ips` is specified, the contract will reserve the number of public ips requested on the node's corresponding farm. If there are not enough ips available an error will be returned. If the contract is canceled by either the user or the node, the ips for that contract will be freed.
+If `public_ips` is specified, the contract will reserve the number of public ips requested on the node's corresponding farm. If there are not enough ips available an error will be returned. If the contract is canceled by either the user or the node, the IPs for that contract will be freed.
 
 This pallet saves this data to storage and returns the user a `contract_id`.
 
@@ -74,7 +74,7 @@ The node can call `add_reports` on this module to submit reports in batches.
 
 Usage of SU, CU and NU will be computed based on the prices and the rules that Threefold set out for cloud pricing.
 
-Billing will be done in Database Tokens and will be send to the corresponding farmer. If the user runs out of funds the chain will set the contract state to `canceled` or it will be removed from storage. The Node needs to act on this contact canceled event and decomission the workload.
+Billing will be done in Database Tokens and will be send to the corresponding farmer. If the user runs out of funds the chain will set the contract state to `cancelled` or it will be removed from storage. The Node needs to act on this 'contract cancelled' event and decommission the workload.
 
 The main currency of this chain. More information on this is explained here: TODO
 
