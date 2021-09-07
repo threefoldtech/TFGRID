@@ -1,4 +1,4 @@
-# Getting Started with TerraForm
+# Getting Started
 
 Here you'll find all of the information you need to create your first deployment on ThreeFold Grid 3.0 using Terraform. We'll walk through how to setup a wallet and Twin on TF Chain, how to install Terraform, and how to use Terraform to provision a basic virtual machine.
 
