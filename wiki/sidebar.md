@@ -1,4 +1,7 @@
 - [Grid Overview](grid_readme)
+- [Getting Started](getting_started)
+  - [TF-Chain](getting_started_tfchain)
+  - [Terraform](getting_started_terraform)
 - [TFGrid Substrate](substrate_readme)
   - [Grid-db Object](griddb)
   - [Grid-db Development environment](grid_substrate_develop)
@@ -18,8 +21,8 @@
   - [Terraform Provider](terraform_provider)
   - [Deploy with Terraform](grid_terraform)
   - [Terraform Kubernetes demo](terraform_k8s)
-- farming
-  - [create farm](create_farm)
+- Farming
+  - [Create Farm](create_farm)
   
 
 !!!include:networking_toc
@@ -27,5 +30,3 @@
 - [Architecture](architecture)
   -  [RMB](rmb_architecture)
   
-
-**CONFIDENTIAL**
