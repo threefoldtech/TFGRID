@@ -1,7 +1,5 @@
 # Introduction
 
-> TODO: this doc needs to be broken apart in different parts
-
 This document is about TF-Grid 3.0. It shows an overview of the grid regarding operation, and how different components communicate to each other.
 
 - [What's New](grid3_new)

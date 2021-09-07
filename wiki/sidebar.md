@@ -4,6 +4,7 @@
   - [TF-Chain](getting_started#tfchain)
   - [Install Terraform](getting_started#terraform)
   - [Deploy Terraform file](getting_started#terraform)
+  - [Create a Farm](create_farm)
 - [TFGrid Substrate](substrate_readme)
   - [Grid-db Object](griddb)
   - [Grid-db Development environment](grid_substrate_develop)
@@ -23,10 +24,6 @@
   - [Terraform Provider](terraform_provider)
   - [Deploy with Terraform](grid_terraform)
   - [Terraform Kubernetes demo](terraform_k8s)
-- Farming
-  - [Create Farm](create_farm)
-  
-
 !!!include:networking_toc
 - [enduser api](z_api)
 - [Architecture](architecture)
