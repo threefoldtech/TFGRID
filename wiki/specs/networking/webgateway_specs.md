@@ -48,7 +48,7 @@ The web gateway to be operational need to do the following main tasks:
 ### Components of a web-gateway
 - DNS
  - This will always answer domain queries with the correct web-gateway IP. Only configured (deployed) names must be answered.
-- Proxy (traefic?)
+- Proxy (traefik?)
  - This will be dynamically configured to forward traffic as configured by the workloads.
  - TLS off loading (letsencrypt)
 - Monitoring

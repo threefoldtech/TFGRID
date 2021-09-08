@@ -1,9 +1,9 @@
 - [Grid Overview](grid_readme)
 - [Getting Started](getting_started)
-  - [Yggdrasil](getting_started#yggdrasil)
-  - [TF-Chain](getting_started#tfchain)
-  - [Install Terraform](getting_started#terraform)
-  - [Deploy Terraform file](getting_started#terraform)
+  - [Yggdrasil](getting_started)
+  - [TF-Chain](getting_started)
+  - [Install Terraform](getting_started)
+  - [Deploy Terraform file](getting_started)
   - [Create a Farm](create_farm)
 - [TFGrid Substrate](substrate_readme)
   - [Grid-db Object](griddb)
@@ -25,7 +25,6 @@
   - [Deploy with Terraform](grid_terraform)
   - [Terraform Kubernetes demo](terraform_k8s)
 !!!include:networking_toc
-- [enduser api](z_api)
 - [Architecture](architecture)
   -  [RMB](rmb_architecture)
   

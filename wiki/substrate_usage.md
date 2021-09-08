@@ -33,4 +33,3 @@ This stores
 - registry of farmers
 - reputation of farmers and nodes
 - phonebook of digital twins
-- ...

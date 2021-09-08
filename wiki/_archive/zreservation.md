@@ -1,5 +1,7 @@
 ## ZReservation
 
+FIXME: doesn't exist
+
 Is a request to TFGrid to bring a part of a full workload life.
 
 A reservation describes one of the tfgrid_primitives, in other words each ZDB, ZMACHINE, ... reservation gets a unique ID.
