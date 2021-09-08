@@ -27,4 +27,5 @@
 !!!include:networking_toc
 - [Architecture](architecture)
   -  [RMB](rmb_architecture)
+  -  [RMB Proxy](rmb_proxy)
   
