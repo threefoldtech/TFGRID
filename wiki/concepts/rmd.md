@@ -12,4 +12,6 @@ The Reliable Message Bus is the communication mechanism between all components o
 - ...
 
 
+check [rmb_architecture](rmb_architecture)
+
 !!!def alias:rmb

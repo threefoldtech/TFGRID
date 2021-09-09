@@ -1,6 +1,6 @@
 # WebGateway 3.0
 
-- choose a suitable web proxy solution (traeffic?)
+- choose a suitable web proxy solution (traefik?)
 - create primitive datastructure to send to web proxy over RMB for provisioning
 - register workload as part of smart contract concept on Substrate
 - bill bandwidth per deployment as used on web proxy

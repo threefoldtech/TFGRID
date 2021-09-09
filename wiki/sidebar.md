@@ -25,7 +25,7 @@
   - [Deploy with Terraform](grid_terraform)
   - [Terraform Kubernetes demo](terraform_k8s)
 !!!include:networking_toc
-- [enduser api](z_api)
 - [Architecture](architecture)
   -  [RMB](rmb_architecture)
+  -  [RMB Proxy](rmb_proxy)
   
