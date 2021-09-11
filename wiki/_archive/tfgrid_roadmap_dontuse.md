@@ -46,7 +46,7 @@ The higher level services like Kubernetes, [3Bot](3bot) and [Quantum Safe Filesy
 
 ### Storage (uses SU)
 
-- flist_fs : deduped imutable filesystem
+- zos_fs : deduped imutable filesystem
 - zmount : a part of a SSD (fast disk), mounted underneith your zmachine
 - zstor_fs : unbreakable storage system (secondary storage only)
 - zdb : the lowest level storage primitive, is a key value stor, used underneith other storage mechanisms typically
