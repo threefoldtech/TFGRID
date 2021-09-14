@@ -9,4 +9,4 @@
 ## User
 
 - user pays per hour for utilities ar used on TFGrid
-- pricing as defined in https://info.threefold.io/#/threefold__grid_pricing
+- pricing as defined in https://info.threefold.io/#/threefold__pricing

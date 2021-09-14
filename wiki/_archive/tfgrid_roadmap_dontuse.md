@@ -25,7 +25,7 @@ The higher level services like Kubernetes, [3Bot](3bot) and [Quantum Safe Filesy
 | ipaddress_mgmt       |                                                | [doc](ipaddress_mgmt)                    |
 | kubernetes net       | ipv6 and default planetary network integration |                                          |
 | planetary network    | can be linked to every primitive workload      |                                          |
-| auto billing/pricing | per hour billing of all primitives             | [doc](threefold:grid_pricing)            |
+| auto billing/pricing | per hour billing of all primitives             | [doc](threefold:pricing)                 |
 | discounts            | discounts in line with staking                 | [doc](threefold:staking_discount_levels) |
 
 # TFGrid 3.1 Sept/Oct 2021

@@ -54,4 +54,4 @@ Metamask is a wallet available as a Chrome add-on for cryptoassets on different 
 
 Get your Metamask wallet [here](https://metamask.io/).
 
-!!!include:tft_safe
+!!!include:tfgrid:tft_safe
