@@ -1,0 +1,11 @@
+{
+    "name": "threefold",
+    "git_url": "git@github.com:threefoldfoundation/info_threefold/tree/development/wiki",
+    "pull": true,
+    "reset": false,
+    "cat": "wiki",
+    "domains": [
+        "info.threefold.io",
+        "wiki.threefold.io"
+    ]
+}

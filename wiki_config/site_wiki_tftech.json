@@ -1,0 +1,10 @@
+{
+	"name": "tftech",
+	"git_url": "https://github.com/threefoldtech/info_tftech/tree/development/wiki",
+	"pull": true,
+	"reset": false,
+	"cat": "wiki",
+	"domains": [
+		"tftech.threefold.io"
+	]
+}

@@ -1,0 +1,10 @@
+{
+	"name": "tfgrid",
+	"git_url": "git@github.com:threefoldfoundation/info_tfgrid/tree/development/wiki",
+	"pull": true,
+	"reset": false,
+	"cat": "wiki",
+	"domains": [
+		"tfgrid.threefold.io"
+	]
+}

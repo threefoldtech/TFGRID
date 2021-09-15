@@ -1,0 +1,12 @@
+{
+	"name": "cloud",
+	"git_url": "git@github.com:threefoldfoundation/info_cloud/tree/development/wiki",
+	"pull": true,
+	"reset": false,
+	"cat": "wiki",
+	"domains": [
+		"cloud-info.threefold.io",
+		"cloud-wiki.threefold.io"
+	],
+	"descr": "how to use the cloud for deploying apps: evdc, kubernetes, planetary fs, ... + marketplace solutions "
+}
