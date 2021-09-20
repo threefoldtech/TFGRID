@@ -4,9 +4,9 @@ tasks:
     - name: WIKI
       command: |
         curl https://raw.githubusercontent.com/freeflowuniverse/crystaltools/development/install.sh > /tmp/install.sh
-        bash /tmp/install.sh
+        sudo bash /tmp/install.sh
         source /workspace/env.sh
-        publtools_check
+        ct_check
         cd wiki_config && publishtools flatten 
         cd ..
         echo ' - do "./wiki_run" to run wiki.'
