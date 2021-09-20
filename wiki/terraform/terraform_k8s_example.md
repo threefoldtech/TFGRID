@@ -5,5 +5,5 @@ In this example we will see how to deploy a kubernetes cluster on the Threefold 
 
 ## Deploying a VM with terraform
 
-[main.tf](https://github.com/threefoldtech/terraform-provider-grid/raw/development/examples/resources/k8s/main.tf ':include :type=code')
+[main.tf](https://raw.githubusercontent.com/threefoldtech/terraform-provider-grid/development/examples/resources/k8s/main.tf ':include :type=code')
 
