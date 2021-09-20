@@ -3,7 +3,6 @@
 
 Steps to deploy a test scenario using zos3, yggdrasil,polkadot.
 
->TODO: is a too big page needs to be cut in pieces
 
 ## Create twin
 

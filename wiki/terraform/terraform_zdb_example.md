@@ -5,5 +5,4 @@ In this example we will see how to deploy ZDBs on the Threefold grid v3
 
 ## Deploying a ZDB with terraform
 
-[main.tf](https://raw.githubusercontent.com/threefoldtech/terraform-provider-grid/development/examples/resources/disks/main.tf ':include :type=code')
-
+!!!code url:'https://github.com/threefoldtech/terraform-provider-grid/blob/development/examples/resources/disks/main.tf'
