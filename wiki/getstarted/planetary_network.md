@@ -1,6 +1,8 @@
 
 # YGGDRASIL
 
+[Yggdrasil](https://yggdrasil-network.github.io) is an early-stage implementation of a fully end-to-end encrypted IPv6 network. It is lightweight, self-arranging, supported on multiple platforms, and allows pretty much any IPv6-capable application to communicate securely with other Yggdrasil nodes. Yggdrasil does not require you to have IPv6 Internet connectivity - it also works over IPv4. For more information
+
 ### Install
 
 Yggdrasil is necessary for communication between your local machine and the nodes on the Grid that you deploy to. Binaries and packages are available for all major operating systems, or it can be built from source. Find installation instructions here.
