@@ -12,7 +12,7 @@ provider "threefoldgrid" {
 ```
 ### environment variables
 should be recognizable as Env variables too
-- `GRID_MNEMONICS`
+- `MNEMONICS`
 - `SUBSTRATE_URL`
 - `TWIN_ID`
 
