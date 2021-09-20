@@ -2,9 +2,7 @@
 - [**Manual 3 Home**](manual3_home)
 -----------
 - [Client Typescript](client_typescript)
-- [How To Get Started](deploy_with_typescript)
-- [Deployment Get](deployment_get)
-- [Deploy Kubernetes](deploy_kubernetes)
-    - [Deploy Kubernetes Test](deploy_kubernetes_test)
-- [Zos Typescript](zos_typescript_readme)
+- [Deploy a VM](client_typescript_vm_example)
+- [Deploy a Kubernetes cluster](client_typescript_kubernetes_example)
+- [Get Deployment information](deployment_get)
 

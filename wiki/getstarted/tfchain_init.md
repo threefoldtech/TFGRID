@@ -29,6 +29,22 @@ Important notes:
 
 ### Create twin on substrate using polkadot
 
+
+- Add the required [types in json format](https://github.com/threefoldtech/tfgrid-api-client/blob/master/types.json) to the [developer settings](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fexplorer.devnet.grid.tf%2Fws#/settings/developer) in polkadot. *note: don't forget to save*
+![](img/substrate_types.png)
+
+- Click on `Add an account` in [polkadot accounts](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fexplorer.devnet.grid.tf%2Fws#/accounts)
+- Save the mnemonic seed in a safe place
+
+- Click on `Advanced creation options` and select the keyword crypto type of **`Edwards (ed25519, alternative)`**
+`
+![](img/add_account_1.png)
+- Add a name and password for your account (remember the password for future usage)
+![](img/add_account_2.png)
+![](img/add_account_3.png)
+- Fund the account with test funds (Click on send funds from the account of Alice to your account name)
+![](img/substrate_send_funds.png)
+
 - Select the options to create the twin in [polkadot developer extrinsics](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fexplorer.devnet.grid.tf%2Fws#/extrinsics)
 
   - Selected account -> your Account name
@@ -40,9 +56,10 @@ Important notes:
   - ip -> Ipv6 obtained from your yggdrasil
 - Submit transaction and enter password selected when creating the account
 
+![](img/substrate_create_twin.png)
+
 - To get your twin ID, select the options required in [polkadot developer chainstate](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fexplorer.devnet.grid.tf%2Fws#/chainstate) and click on the +
   - Module -> tfgridModule
-  - Method -> twinID(): u32t
+  - Method -> twinID(): u32
 
-
-
+![](img/substrate_twin_id.png)

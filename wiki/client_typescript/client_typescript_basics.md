@@ -1,7 +1,5 @@
 # grid3_client_ts
 
-> TODO: WHY THIS DOC, WHAT IS PURPOSE
-
 Github repo: [grid3_client_ts](https://github.com/threefoldtech/grid3_client_ts.git)
 
 ## Prerequisites
@@ -33,7 +31,3 @@ tsc test.ts && node test.js
 cd scripts
 tsc test_kubernetes.ts && node test_kubernetes.js
 ```
-
->TODO: where are these scripts?
-
-check [deploy_with_typescript](deploy_with_typescript) for more detailed information

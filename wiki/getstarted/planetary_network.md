@@ -86,6 +86,7 @@ You'll need this address when registering your twin on TF Chain in the next step
 
 # Setup yggdrasil (optional to obtain public Ipv6 address)
 
+
 - download and install yggdrasil using the following [link](https://github.com/yggdrasil-network/yggdrasil-go/releases/tag/v0.4.0)
 - Start it initially to init the configurations:
 
@@ -94,9 +95,18 @@ You'll need this address when registering your twin on TF Chain in the next step
 
         yggdrasil -useconffile /etc/yggdrasil.conf
 - Add the needed [peers](https://publicpeers.neilalexander.dev/) in the config file generated under Peers.
+
+  **example**:
+
+        Peers:
+        [
+        tls://54.37.137.221:11129
+        ]
+
 - Restart yggdrasil by
 
         systemctl restart yggdrasil
+
 
 
 
