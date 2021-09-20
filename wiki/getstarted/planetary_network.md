@@ -15,6 +15,8 @@ Add peers to your configuration file like so:
 Peers: ["PEER_URL:PORT", "PEER_URL:PORT", ...]
 ```
 
+please consult [yggdrasil installation page](https://yggdrasil-network.github.io/installation.html) for more information and clients
+
 ### Run
 
 #### Linux
@@ -97,3 +99,7 @@ You'll need this address when registering your twin on TF Chain in the next step
         systemctl restart yggdrasil
 
 
+
+
+# Desktop apps
+- [yggdrassil connector](https://github.com/MohamedElmdary/yggdrasil-connector)
