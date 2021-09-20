@@ -1,5 +1,7 @@
 # grid3_client_ts
 
+> TODO: WHY THIS DOC, WHAT IS PURPOSE
+
 Github repo: [grid3_client_ts](https://github.com/threefoldtech/grid3_client_ts.git)
 
 ## Prerequisites

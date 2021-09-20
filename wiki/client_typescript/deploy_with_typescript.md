@@ -3,6 +3,8 @@
 
 Steps to deploy a test scenario using zos3, yggdrasil,polkadot.
 
+>TODO: is a too big page needs to be cut in pieces
+
 ## Create twin
 
 ### 1. Create account on substrate using polkadot
@@ -143,6 +145,8 @@ ssh root@<public_ip>
     PersistentKeepalive = 25
     Endpoint = 185.206.122.31:6835
 
+
+> TODO: SEEMS TO BE DOUBLE WITH OTHER PAGES
 
 
 ## example creating a zmachine 
