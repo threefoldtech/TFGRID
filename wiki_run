@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-publtools_check
+ct_check
 cd wiki_config
 publishtools develop
 
