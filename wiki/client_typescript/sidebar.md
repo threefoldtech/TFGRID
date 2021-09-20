@@ -1,5 +1,5 @@
-- [**Manual 3 Home**](manual3_home)
 - [**ThreeFold Home**](threefold:threefold_home)
+- [**Manual 3 Home**](manual3_home)
 -----------
 - [Client Typescript](client_typescript)
 - [How To Get Started](deploy_with_typescript)

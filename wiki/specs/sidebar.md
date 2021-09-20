@@ -1,5 +1,5 @@
-- [**Manual 3 Home**](manual3_home)
 - [**ThreeFold Home**](threefold:threefold_home)
+- [**Manual 3 Home**](manual3_home)
 -----------
 - [TFGrid Substrate](substrate_readme)
   - [Grid-db Object](griddb)
